@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Star, TrendingUp, Users, Award, ArrowRight, Quote } from "lucide-react";
 
-
 const reviews = [
   {
     id: 1,
@@ -37,9 +36,9 @@ const reviews = [
   },
 ];
 const expertiseAreas = [
-  "B2B Matchmaking",
-  "Exhibitions",
   "Events",
+  "Exhibitions",
+  "B2B Matchmaking",
   "Project Management",
   "Marketing Analysis",
   "Conceptualization",
@@ -91,195 +90,227 @@ function Hero({ onNavigate }) {
   }, [slides.length]);
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#071a2a]">
-      {/* Slideshow */}
-      <div className="absolute inset-0">
-        {slides.map((src, i) => (
+   
+  <section className="relative min-h-screen overflow-hidden bg-[#071a2a]">
+    {/* Slides */}
+    <div className="absolute inset-0">
+      {slides.map((src, i) => (
+        <div
+          key={src}
+          className={`absolute inset-0 transition-opacity duration-1000 ${
+            i === active ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <img
+            src={src}
+            alt=""
+            className="h-full w-full object-cover"
+            draggable={false}
+          />
+
+          {/* cinematic zoom */}
           <div
-            key={src}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              i === active ? "opacity-100" : "opacity-0"
+            className={`absolute inset-0 ${
+              i === active ? "animate-[bfZoom_8s_ease-in-out_infinite]" : ""
             }`}
-          >
-            {/* image */}
-            <img
-              src={src}
-              alt=""
-              className="h-full w-full object-cover"
-              draggable={false}
-            />
-            {/* subtle cinematic zoom layer */}
+            style={{
+              background:
+                "radial-gradient(1200px 700px at 25% 25%, rgba(255,255,255,0.10), transparent 60%), radial-gradient(1100px 650px at 80% 40%, rgba(32,108,166,0.18), transparent 58%), radial-gradient(1000px 700px at 50% 92%, rgba(0,0,0,0.40), transparent 62%)",
+            }}
+          />
+        </div>
+      ))}
+
+      {/* Clean luxury overlays (NO lines/grid) */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#04111d]/78 via-[#06233a]/42 to-[#04111d]/80" />
+      <div className="absolute inset-0 bg-[radial-gradient(1100px_600px_at_30%_20%,rgba(177,180,173,0.16),transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(1100px_700px_at_78%_45%,rgba(32,108,166,0.22),transparent_60%)]" />
+
+      {/* Vignette (keeps it premium) */}
+      <div className="absolute inset-0 bg-[radial-gradient(1300px_800px_at_50%_30%,transparent_45%,rgba(0,0,0,0.62)_100%)]" />
+
+      {/* Aurora / beam (unique signature, no lines) */}
+      <div className="absolute -left-40 top-0 h-full w-[520px] rotate-12 bg-white/5 blur-2xl opacity-60" />
+      <div className="absolute -right-52 top-[-120px] h-[520px] w-[520px] rounded-full bg-[#206ca6]/18 blur-3xl" />
+      <div className="absolute -left-52 bottom-[-140px] h-[520px] w-[520px] rounded-full bg-[#b1b4ad]/14 blur-3xl" />
+    </div>
+
+    {/* Keyframes */}
+    <style>{`
+      @keyframes bfZoom { 
+        0% { transform: scale(1); } 
+        50% { transform: scale(1.08); } 
+        100% { transform: scale(1); } 
+      }
+      @keyframes bfFloat {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-12px); }
+      }
+      @keyframes bfIn {
+        0% { transform: translateY(16px); opacity: 0; }
+        100% { transform: translateY(0px); opacity: 1; }
+      }
+      @keyframes bfPulseGlow {
+        0%, 100% { opacity: .35; transform: scale(1); }
+        50% { opacity: .55; transform: scale(1.05); }
+      }
+    `}</style>
+
+    {/* Content */}
+    <div className="relative z-10">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-28 pb-16 min-h-screen flex items-center">
+        <div className="grid lg:grid-cols-12 gap-10 w-full items-center">
+          {/* LEFT */}
+          <div className="lg:col-span-7">
+            {/* minimal top label */}
             <div
-              className={`absolute inset-0 ${
-                i === active ? "animate-[bfZoom_6s_ease-in-out_infinite]" : ""
-              }`}
-              style={{
-                background:
-                  "radial-gradient(1200px 600px at 20% 20%, rgba(255,255,255,0.10), transparent 60%), radial-gradient(900px 500px at 80% 30%, rgba(32,108,166,0.18), transparent 55%), radial-gradient(900px 600px at 50% 90%, rgba(0,0,0,0.35), transparent 60%)",
-              }}
-            />
-          </div>
-        ))}
+              className="inline-flex items-center gap-3 rounded-full border border-white/12 bg-white/8 px-5 py-2 text-white/80 backdrop-blur-md"
+              style={{ animation: "bfIn 700ms ease-out both" }}
+            >
+              <Award className="w-4 h-4 text-white" />
+              <span className="text-sm font-semibold tracking-wide">
+                15+ Years of Excellence in Dubai
+              </span>
+              <span className="h-4 w-px bg-white/15 mx-1" />
+              <span className="text-xs uppercase tracking-[0.32em] text-white/65">
+                Events • Exhibitions • Experiences
+              </span>
+            </div>
 
-        {/* premium overlays */}
-       <div className="absolute inset-0 bg-gradient-to-br from-[#04111d]/70 via-[#06233a]/45 to-[#04111d]/65" />
+            <div className="mt-8 max-w-2xl" style={{ animation: "bfIn 900ms ease-out both" }}>
+              {/* Signature halo behind headline (unique) */}
+              <div className="relative">
+                <div
+                  className="absolute -top-10 -left-10 h-40 w-40 rounded-full bg-[#206ca6]/25 blur-2xl"
+                  style={{ animation: "bfPulseGlow 6s ease-in-out infinite" }}
+                />
+                <div
+                  className="absolute top-2 left-40 h-28 w-28 rounded-full bg-[#b1b4ad]/18 blur-2xl"
+                  style={{ animation: "bfPulseGlow 7s ease-in-out infinite" }}
+                />
 
-        <div className="absolute inset-0 bg-[radial-gradient(900px_500px_at_30%_25%,rgba(177,180,173,0.18),transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(1000px_600px_at_75%_45%,rgba(32,108,166,0.22),transparent_58%)]" />
-
-        {/* subtle grid / texture */}
-        <div className="absolute inset-0 bg-[radial-gradient(900px_500px_at_50%_35%,rgba(255,255,255,0.06),transparent_60%)]" />
-
-      </div>
-
-      {/* Keyframes */}
-      <style>{`
-        @keyframes bfZoom {
-          0% { transform: scale(1); }
-          50% { transform: scale(1.06); }
-          100% { transform: scale(1); }
-        }
-      `}</style>
-
-      {/* Content */}
-      <div className="relative z-10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-28 pb-16 min-h-screen flex items-center">
-          <div className="grid lg:grid-cols-12 gap-10 w-full items-center">
-            {/* Left: Editorial glass panel */}
-            <div className="lg:col-span-7">
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-5 py-2 text-white/85 backdrop-blur-md">
-                <Award className="w-4 h-4 text-white" />
-                <span className="text-sm font-semibold tracking-wide">
-                  15+ Years of Excellence in Dubai
-                </span>
-                <span className="mx-2 h-4 w-px bg-white/15" />
-                <span className="text-xs uppercase tracking-[0.28em] text-white/70">
-                  Events • Exhibitions • Experiences
-                </span>
-              </div>
-
-              <div className="mt-7 max-w-2xl">
-                <h1 className="text-5xl md:text-7xl font-extrabold leading-[1.02] text-white">
+                <h1 className="text-5xl md:text-7xl font-extrabold leading-[1.03] text-white">
                   Make Your Brand
-                  <span className="block mt-3 bg-gradient-to-r from-[#b1b4ad] via-white to-[#a6d3ff] bg-clip-text text-transparent">
-                    Impossible to Ignore
+                  <span className="relative block mt-3">
+                    <span className="bg-gradient-to-r from-[#b1b4ad] via-white to-[#a6d3ff] bg-clip-text text-transparent">
+                      Impossible to Ignore
+                    </span>
+                    {/* underline glow, not a line */}
+                    <span className="absolute -bottom-2 left-0 h-[12px] w-[62%] rounded-full bg-[#206ca6]/22 blur-md" />
                   </span>
                 </h1>
+              </div>
 
-                <p className="mt-6 text-lg md:text-xl text-white/75 leading-relaxed">
-                  From high-stakes corporate events to standout exhibitions —
-                  Blue Focus designs, builds, and delivers experiences that look
-                  premium, feel effortless, and drive real business attention.
-                </p>
+              <p className="mt-7 text-lg md:text-xl text-white/75 leading-relaxed">
+                From high-stakes corporate events to standout exhibitions — Blue Focus designs,
+                builds, and delivers experiences that look premium, feel effortless, and drive real
+                business attention.
+              </p>
 
-                {/* CTA row */}
-                <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                  <button
-                    type="button"
-                    onClick={() => onNavigate("contact")}
-                    className="group inline-flex items-center justify-center gap-2 rounded-2xl bg-white text-[#0b3f63] px-9 py-5 font-extrabold text-base md:text-lg hover:shadow-2xl hover:shadow-black/25 transition-all"
-                  >
-                    Start Your Project
-                    <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-                  </button>
+              {/* CTAs */}
+              <div className="mt-10 flex flex-col sm:flex-row gap-4">
+  {/* Primary */}
+  <button
+    type="button"
+    onClick={() => onNavigate("contact")}
+    className="
+      group inline-flex items-center justify-center
+      px-7 py-3.5
+      text-[13.5px] md:text-[14px]
+      font-semibold tracking-wide
+      rounded-full
+      bg-white text-[#071a2a]
+      transition-all duration-300
+      hover:bg-white/90
+      focus:outline-none
+    "
+  >
+    <span className="flex items-center gap-2">
+      Start Your Project
+      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+    </span>
+  </button>
 
-                  <button
-                    type="button"
-                    onClick={() => onNavigate("portfolio")}
-                    className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/25 bg-white/5 px-9 py-5 font-bold text-base md:text-lg text-white hover:bg-white/10 hover:border-white/40 transition-all backdrop-blur-md"
-                  >
-                    View Our Work
-                    <ArrowRight className="w-6 h-6" />
-                  </button>
-                </div>
+  {/* Secondary */}
+  <button
+    type="button"
+    onClick={() => onNavigate("portfolio")}
+    className="
+      group inline-flex items-center justify-center
+      px-7 py-3.5
+      text-[13.5px] md:text-[14px]
+      font-medium tracking-wide
+      rounded-full
+      text-white
+      border border-white/25
+      transition-all duration-300
+      hover:border-white/50
+      focus:outline-none
+    "
+  >
+    <span className="flex items-center gap-2">
+      View Our Work
+      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+    </span>
+  </button>
+</div>
 
-                {/* Proof strip */}
-                <div className="mt-10 grid grid-cols-3 gap-6 max-w-xl">
-                  {[
-                    { big: "500+", small: "Events Delivered" },
-                    { big: "250+", small: "Happy Clients" },
-                    { big: "15+", small: "Years Experience" },
-                  ].map((m) => (
-                    <div key={m.small} className="relative">
-                      <div className="text-3xl md:text-4xl font-extrabold text-white">
-                        {m.big}
-                      </div>
-                      <div className="mt-1 text-xs md:text-sm text-white/65 tracking-wide">
-                        {m.small}
-                      </div>
-                      <div className="mt-3 h-[2px] w-14 bg-gradient-to-r from-[#206ca6] to-[#b1b4ad]" />
+
+              {/* Proof strip (no boxes) */}
+              <div className="mt-12 grid grid-cols-3 gap-6 max-w-xl">
+                {[
+                  { big: "500+", small: "Events Delivered" },
+                  { big: "250+", small: "Happy Clients" },
+                  { big: "15+", small: "Years Experience" },
+                ].map((m) => (
+                  <div key={m.small} className="relative">
+                    <div className="text-3xl md:text-4xl font-extrabold text-white">
+                      {m.big}
                     </div>
+                    <div className="mt-1 text-xs md:text-sm text-white/65 tracking-wide">
+                      {m.small}
+                    </div>
+                    <div className="mt-3 h-[2px] w-14 bg-gradient-to-r from-[#206ca6] to-[#b1b4ad]" />
+                  </div>
+                ))}
+              </div>
+
+              {/* Dots (premium minimal) */}
+              {slides.length > 1 && (
+                <div className="mt-10 flex items-center gap-3">
+                  {slides.map((_, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      onClick={() => setActive(i)}
+                      className={`h-[10px] rounded-full transition-all ${
+                        i === active
+                          ? "w-12 bg-white"
+                          : "w-[10px] bg-white/35 hover:bg-white/55"
+                      }`}
+                      aria-label={`Go to slide ${i + 1}`}
+                    />
                   ))}
                 </div>
-              </div>
-            </div>
-
-            {/* Right: unique “slide control + mini caption” column */}
-            <div className="lg:col-span-5">
-              <div className="lg:ml-auto max-w-md">
-                <div className="rounded-3xl border border-white/15 bg-white/10 backdrop-blur-xl p-7 shadow-2xl shadow-black/30">
-                  <div className="flex items-center justify-between">
-                    <div className="text-sm font-semibold tracking-[0.22em] text-white/70 uppercase">
-                      Showcase Reel
-                    </div>
-                    <div className="text-xs text-white/55">
-                      {String(active + 1).padStart(2, "0")} /{" "}
-                      {String(slides.length).padStart(2, "0")}
-                    </div>
-                  </div>
-
-                  <div className="mt-5">
-                    <div className="text-2xl font-extrabold text-white leading-tight">
-                      A moving backdrop that feels
-                      <span className="block bg-gradient-to-r from-[#b1b4ad] to-white bg-clip-text text-transparent">
-                        premium & alive
-                      </span>
-                    </div>
-                    <p className="mt-3 text-sm md:text-base text-white/70 leading-relaxed">
-                      Your hero is now a cinematic slideshow with clean overlays,
-                      editorial typography, and minimal controls — made for
-                      high-end brands.
-                    </p>
-                  </div>
-
-                  {/* Dots */}
-                  <div className="mt-7 flex items-center gap-2">
-                    {slides.map((_, i) => (
-                      <button
-                        key={i}
-                        type="button"
-                        onClick={() => setActive(i)}
-                        className={`h-2.5 rounded-full transition-all ${
-                          i === active
-                            ? "w-10 bg-white"
-                            : "w-2.5 bg-white/35 hover:bg-white/55"
-                        }`}
-                        aria-label={`Go to slide ${i + 1}`}
-                      />
-                    ))}
-                  </div>
-
-                  {/* tiny hint row */}
-                  <div className="mt-6 flex items-center justify-between text-xs text-white/55">
-                    <span>Crossfade • Soft zoom • Premium overlays</span>
-                    <span className="tracking-[0.18em] uppercase">Blue Focus</span>
-                  </div>
-                </div>
-
-                {/* bottom floating ribbon */}
-                <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md px-6 py-4 text-white/70 text-sm">
-                  Fast response • Clear scope • On-time delivery • Dubai, UAE
-                </div>
-              </div>
+              )}
             </div>
           </div>
-        </div>
 
-        {/* bottom fade into next section */}
-        <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-white to-transparent" />
-      </div>
-    </section>
-  );
+          
+              </div>
+
+             
+                
+              </div>
+            </div>
+       
+        
+      
+    
+      </section>
+);
+
+  
 }
 export default function Home({ onNavigate }) {
   return (
@@ -470,26 +501,172 @@ export default function Home({ onNavigate }) {
         </div>
 
         {/* Minimal metrics row (no boxes) */}
-        <div className="mt-12 flex flex-wrap items-center gap-x-12 gap-y-4 text-gray-600">
-          <div className="flex items-baseline gap-3">
-            <span className="text-4xl font-extrabold text-gray-900">500+</span>
-            <span className="text-sm tracking-wide">Events</span>
-          </div>
-          <div className="flex items-baseline gap-3">
-            <span className="text-4xl font-extrabold text-gray-900">250+</span>
-            <span className="text-sm tracking-wide">Clients</span>
-          </div>
-          <div className="flex items-baseline gap-3">
-            <span className="text-4xl font-extrabold text-gray-900">15+</span>
-            <span className="text-sm tracking-wide">Years</span>
-          </div>
-        </div>
+        {/* Minimal metrics row (no boxes) */}
+<div className="mt-12 flex flex-wrap items-center gap-x-12 gap-y-4 text-gray-600">
+  <div className="flex items-baseline gap-3">
+    <span className="text-4xl font-extrabold text-gray-900">500+</span>
+    <span className="text-sm tracking-wide">Events</span>
+  </div>
+  <div className="flex items-baseline gap-3">
+    <span className="text-4xl font-extrabold text-gray-900">250+</span>
+    <span className="text-sm tracking-wide">Clients</span>
+  </div>
+  <div className="flex items-baseline gap-3">
+    <span className="text-4xl font-extrabold text-gray-900">15+</span>
+    <span className="text-sm tracking-wide">Years</span>
+  </div>
+</div>
+
+{/* EXTREMELY UNIQUE FILL — Brand Constellation (no cards/boxes) */}
+<div className="mt-10 relative overflow-hidden rounded-2xl">
+  {/* Make sure it actually occupies the empty pocket */}
+  <div className="relative min-h-[240px] lg:min-h-[280px]">
+    {/* Background atmosphere */}
+    <div className="pointer-events-none absolute inset-0">
+      <div className="absolute -top-32 right-[-180px] w-[520px] h-[520px] rounded-full bg-[#206ca6]/12 blur-3xl" />
+      <div className="absolute bottom-[-260px] right-[-220px] w-[680px] h-[680px] rounded-full bg-[#b1b4ad]/14 blur-3xl" />
+
+      {/* super subtle grid */}
+      <div className="absolute inset-0 opacity-[0.06] bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] [background-size:44px_44px]" />
+
+      {/* big watermark */}
+      <div className="absolute right-0 bottom-[-10px] text-[160px] md:text-[200px] font-extrabold tracking-tight text-gray-900/5 select-none leading-none">
+        BF
+      </div>
+
+      {/* shimmer scan */}
+      <div className="absolute -left-1/3 top-0 h-full w-1/2 rotate-12 bg-gradient-to-r from-transparent via-white/35 to-transparent opacity-30 blur-xl animate-[bfScan_6.5s_ease-in-out_infinite]" />
+    </div>
+
+    <style>{`
+      @keyframes bfScan {
+        0% { transform: translateX(-40%); opacity: .05; }
+        40% { opacity: .22; }
+        100% { transform: translateX(140%); opacity: .05; }
+      }
+      @keyframes bfGlow {
+        0%,100% { opacity: .45; transform: scale(1); }
+        50% { opacity: .75; transform: scale(1.06); }
+      }
+    `}</style>
+
+    {/* Header line */}
+    <div className="relative z-10 flex items-center gap-4">
+      <span className="text-sm font-semibold tracking-[0.22em] text-gray-500 uppercase">
+        Capability Constellation
+      </span>
+      <div className="h-px flex-1 bg-gray-200" />
+      <span className="text-xs tracking-[0.28em] text-gray-400 uppercase">
+        Dubai • UAE
+      </span>
+    </div>
+
+    {/* Constellation canvas */}
+    <div className="relative z-10 mt-6">
+      <svg
+        viewBox="0 0 1000 320"
+        className="w-full h-[220px] lg:h-[250px]"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {/* soft routes */}
+        <path
+          d="M90 250 C 220 120, 340 120, 470 170 C 610 225, 720 90, 910 120"
+          stroke="rgba(32,108,166,0.25)"
+          strokeWidth="3"
+          strokeLinecap="round"
+        />
+        <path
+          d="M120 120 C 260 210, 360 240, 520 220 C 690 195, 760 250, 900 260"
+          stroke="rgba(177,180,173,0.25)"
+          strokeWidth="2"
+          strokeLinecap="round"
+        />
+
+        {/* central hub */}
+        <circle cx="500" cy="165" r="10" fill="rgba(32,108,166,0.95)" />
+        <circle cx="500" cy="165" r="22" fill="rgba(32,108,166,0.14)" />
+        <circle cx="500" cy="165" r="34" fill="rgba(32,108,166,0.08)" />
+        <circle cx="500" cy="165" r="34" stroke="rgba(32,108,166,0.18)" />
+
+        {/* node helper */}
+        {/*
+          Nodes are arranged to visually fill the right pocket.
+          Keep these as-is to avoid “empty” feeling.
+        */}
+        {/* Nodes + labels */}
+        <g>
+          {/* node 1 */}
+          <circle cx="120" cy="120" r="6" fill="rgba(32,108,166,0.95)" />
+          <circle cx="120" cy="120" r="16" fill="rgba(32,108,166,0.10)" />
+          <text x="150" y="126" fontSize="16" fill="#111827" fontWeight="700">
+            Exhibitions & Stands
+          </text>
+
+          {/* node 2 */}
+          <circle cx="90" cy="250" r="6" fill="rgba(32,108,166,0.95)" />
+          <circle cx="90" cy="250" r="16" fill="rgba(32,108,166,0.10)" />
+          <text x="120" y="256" fontSize="16" fill="#111827" fontWeight="700">
+            Corporate Events
+          </text>
+
+          {/* node 3 */}
+          <circle cx="720" cy="90" r="6" fill="rgba(32,108,166,0.95)" />
+          <circle cx="720" cy="90" r="16" fill="rgba(32,108,166,0.10)" />
+          <text x="750" y="96" fontSize="16" fill="#111827" fontWeight="700">
+            Brand Activations
+          </text>
+
+          {/* node 4 */}
+          <circle cx="910" cy="120" r="6" fill="rgba(32,108,166,0.95)" />
+          <circle cx="910" cy="120" r="16" fill="rgba(32,108,166,0.10)" />
+          <text x="680" y="150" fontSize="16" fill="#111827" fontWeight="700">
+            Production & Build
+          </text>
+
+          {/* node 5 */}
+          <circle cx="900" cy="260" r="6" fill="rgba(177,180,173,0.95)" />
+          <circle cx="900" cy="260" r="16" fill="rgba(177,180,173,0.14)" />
+          <text x="620" y="292" fontSize="16" fill="#111827" fontWeight="700">
+            Full On-Ground Delivery
+          </text>
+
+          {/* micro caption near hub */}
+          <text x="520" y="170" fontSize="12" fill="rgba(17,24,39,0.55)" letterSpacing="3">
+            HUB
+          </text>
+        </g>
+      </svg>
+
+      {/* bottom micro-proof line (anchors the area so it never feels empty) */}
+      <div className="mt-2 flex flex-wrap items-center gap-x-8 gap-y-2 text-xs tracking-[0.26em] uppercase text-gray-400">
+        <span className="inline-flex items-center gap-2">
+          <span
+            className="h-2 w-2 rounded-full bg-[#206ca6]"
+            style={{ animation: "bfGlow 3.8s ease-in-out infinite" }}
+          />
+          Strategy
+        </span>
+        <span className="opacity-40">•</span>
+        <span>Design</span>
+        <span className="opacity-40">•</span>
+        <span>Build</span>
+        <span className="opacity-40">•</span>
+        <span>Execute</span>
+      </div>
+    </div>
+  </div>
+</div>
+
       </div>
     </div>
   </div>
 </section>
 {/* Our Area of Expertise (No cards) */}
-<section className="relative py-24 bg-white overflow-hidden">
+<section className="relative -mt-16 pt-0 pb-24 bg-white overflow-hidden">
+
+
+
   {/* Background accents */}
   <div className="absolute inset-0 pointer-events-none">
     <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[900px] bg-[#206ca6]/10 rounded-full blur-3xl" />
@@ -577,7 +754,8 @@ export default function Home({ onNavigate }) {
 </section>
 {/* Our Inhouse Management Services (No cards) */}
 {/* Our Inhouse Management Services — Manifesto Layout (No cards / no boxes) */}
-<section className="relative py-28 bg-white overflow-hidden">
+<section className="relative -mt-12 pt-8 pb-24 bg-white overflow-hidden">
+
   {/* Ambient background */}
   <div className="absolute inset-0 pointer-events-none">
     <div className="absolute -top-44 left-1/2 -translate-x-1/2 w-[1000px] h-[1000px] bg-[#206ca6]/10 rounded-full blur-3xl" />
@@ -680,16 +858,9 @@ export default function Home({ onNavigate }) {
 
 
         
-      
-      
+    
+     <div className="relative -mt-20 overflow-hidden">
 
-     
-      
-
-      
-      
-
-      <div className="relative overflow-hidden">
   {/* Marquee ribbon */}
   <div className="relative bg-[#0b1220] border-y border-white/10">
     <style>{`
@@ -725,7 +896,8 @@ export default function Home({ onNavigate }) {
   </div>
 
   {/* Main CTA */}
-  <div className="relative bg-gradient-to-br from-gray-950 via-[#0d3d5c] to-gray-950 py-24">
+  <div className="relative bg-gradient-to-br from-gray-950 via-[#0d3d5c] to-gray-950 pt-14 pb-24">
+
     {/* Unique diagonal spotlight */}
     <div className="absolute inset-0 pointer-events-none">
       <div className="absolute -top-48 left-1/2 -translate-x-1/2 w-[1100px] h-[700px] bg-[#206ca6]/25 blur-3xl rounded-full" />
