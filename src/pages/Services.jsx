@@ -13,31 +13,9 @@ import { useMemo, useState } from "react";
 
 const servicesData = [
   {
-    id: "project-management",
-    title: "Project Management",
-    image: "/images/services/project-management.jpg",
-    desc:
-      "Project management improves productivity and reduces costs and workload. The ultimate goal of project management and planning is efficiency. We help you create reusable processes, templates, and procedures to mitigate risk and improve delivery speed.",
-    bullets: [
-      "Reusable processes & templates",
-      "Risk mitigation through planning",
-      "Faster delivery with clear methodology",
-    ],
-  },
-  {
-    id: "corporate-exhibitions",
-    title: "Corporate Exhibitions",
-    desc:
-      "Trade shows have evolved into sophisticated exhibition concepts. We deliver effective turnkey solutions through teamwork and executed with extreme precision—helping your brand stand apart from competitors.",
-    bullets: [
-      "Turnkey exhibition solutions",
-      "Precision execution & planning",
-      "Design + build aligned to goals",
-    ],
-  },
-  {
     id: "corporate-events",
-    title: "Corporate Events (Conferences & Seminars)",
+    title: "Corporate Events",
+     image: "/image/corporate.jpg",
     desc:
       "We initiate and coordinate programs end-to-end with a focus on your requirements. Our approach ensures best-in-class arrangements and continuous improvement for a competitive advantage.",
     bullets: [
@@ -47,9 +25,35 @@ const servicesData = [
       "Private + government sector engagement",
     ],
   },
+ 
+  {
+    id: "corporate-exhibitions",
+    title: "Corporate Exhibitions",
+     image: "/image/corporate-exhibitions.jpg",
+    desc:
+      "Trade shows have evolved into sophisticated exhibition concepts. We deliver effective turnkey solutions through teamwork and executed with extreme precision—helping your brand stand apart from competitors.",
+    bullets: [
+      "Turnkey exhibition solutions",
+      "Precision execution & planning",
+      "Design + build aligned to goals",
+    ],
+  },
+   {
+    id: "project-management",
+    title: "Project Management",
+    image: "/image/project-management.jpg",
+    desc:
+      "Project management improves productivity and reduces costs and workload. The ultimate goal of project management and planning is efficiency. We help you create reusable processes, templates, and procedures to mitigate risk and improve delivery speed.",
+    bullets: [
+      "Reusable processes & templates",
+      "Risk mitigation through planning",
+      "Faster delivery with clear methodology",
+    ],
+  },
   {
     id: "b2b-matchmaking",
     title: "B2B Matchmaking",
+    image: "/image/B2B.jpg",
     desc:
       "We structure interactions to save time, avoid mindless prospecting, and align stakeholders through meaningful one-to-one agendas.",
     bullets: ["Curated 1:1 agendas", "Time-saving matchmaking", "Aligned stakeholders"],
@@ -57,6 +61,7 @@ const servicesData = [
   {
     id: "b2b-online",
     title: "B2B Matchmaking — Online",
+    image: "/image/online.jpg",
     desc:
       "Online matchmaking helps you expand reach. Showcase products, connect with decision-makers, attend seminars, and communicate with business owners at scale.",
     bullets: [
@@ -68,6 +73,7 @@ const servicesData = [
   {
     id: "leisure-events",
     title: "Leisure Events",
+    image: "/image/leisure.jpg",
     desc:
       "From planning to rehearsal and direction, we handle details from décor to production so your celebration feels effortless and refined.",
     bullets: ["End-to-end planning", "Direction & rehearsal support", "Décor + production details"],
@@ -75,6 +81,7 @@ const servicesData = [
   {
     id: "industrial-analysis",
     title: "Industrial Analysis",
+    image: "/image/industrial.jpg",
     desc:
       "Industry analysis helps businesses understand their position, threats, and opportunities, and focus resources to build capabilities that deliver a competitive advantage.",
     bullets: ["Threat & opportunity mapping", "Competitive positioning", "Strategy support"],
@@ -82,6 +89,7 @@ const servicesData = [
   {
     id: "brand-strategy",
     title: "Brand Strategy",
+     image: "/image/brand.jpg",
     desc:
       "We help brand owners explore insights and determine future strategies to drive growth. Optimize go-to-market approach, reach the right consumers, and stand out from competition.",
     bullets: ["Brand insights & direction", "Go-to-market optimization", "Distinct positioning"],
@@ -89,6 +97,7 @@ const servicesData = [
   {
     id: "creative-development",
     title: "Creative Development",
+         image: "/image/creative.jpg",
     desc:
       "Our team includes architects, designers, engineers, executives, and project managers. We guide you from day one until the finale—keeping the process stress-free and results-driven.",
     bullets: ["Creative + technical expertise", "From concept to completion", "Stress-free delivery"],
@@ -96,6 +105,7 @@ const servicesData = [
   {
     id: "customized-solutions",
     title: "Customized Solutions",
+    image: "/image/customized.jpg",
     desc:
       "From brand awareness to launching new products, we translate strategy into sophisticated stand solutions. Create maximum impact with custom concepts tailored to your goals.",
     bullets: [
@@ -109,6 +119,7 @@ const servicesData = [
   {
     id: "promotional-solutions",
     title: "Promotional Solutions",
+     image: "/image/promotional.jpg",
     desc:
       "Portable displays for brand awareness—easy to assemble and travel-ready, with graphics that can be interchanged and reused.",
     bullets: ["Pop-up stands", "Roll-up stands", "Banner displays", "POS units", "Flags", "Brochure holders"],
@@ -205,9 +216,10 @@ export default function Services({ onNavigate }) {
   );
 
   return (
-    <div className="min-h-screen bg-white pt-20">
+    <div className="min-h-screen bg-white">
       {/* SERVICES HERO — Premium / Unique */}
-<div className="relative overflow-hidden bg-gradient-to-br from-[#081527] via-[#0d3d5c] to-[#081527] pt-28 pb-24">
+<div className="relative overflow-hidden bg-gradient-to-br from-[#081527] via-[#0d3d5c] to-[#081527] pt-8 pb-20">
+
   {/* background art */}
   <div className="absolute inset-0 pointer-events-none">
     {/* glows */}
@@ -238,11 +250,9 @@ export default function Services({ onNavigate }) {
   <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
     <div className="grid lg:grid-cols-12 gap-14 items-center">
       {/* LEFT: copy */}
-      <div className="lg:col-span-7">
-        <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur text-white/85 px-6 py-3 rounded-full text-sm font-semibold border border-white/15">
-          <span className="h-[2px] w-10 bg-gradient-to-r from-[#206ca6] to-[#b1b4ad]" />
-          Our Services
-        </div>
+      <div className="lg:col-span-7 pt-10 sm:pt-14 lg:pt-20">
+
+       
 
         <h1 className="mt-8 text-5xl md:text-7xl font-extrabold text-white leading-[1.02]">
           Comprehensive solutions
@@ -259,21 +269,47 @@ export default function Services({ onNavigate }) {
         {/* CTA row */}
         <div className="mt-10 flex flex-col sm:flex-row gap-4">
           <button
-            type="button"
-            onClick={() => onNavigate("contact")}
-            className="group px-10 py-5 rounded-2xl bg-white text-[#206ca6] font-extrabold text-lg hover:shadow-2xl hover:shadow-white/15 transition-all duration-300 inline-flex items-center justify-center gap-2"
-          >
+    type="button"
+    onClick={() => onNavigate("contact")}
+    className="
+      group inline-flex items-center justify-center
+      px-7 py-3.5
+      text-[13.5px] md:text-[14px]
+      font-semibold tracking-wide
+      rounded-full
+      bg-white text-[#071a2a]
+      transition-all duration-300
+      hover:bg-white/90
+      focus:outline-none
+    "
+  >
+    <span className="flex items-center gap-2">
+          
             Talk to Us
-            <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+            </span>
           </button>
 
-          <button
-            type="button"
-            onClick={() => onNavigate("portfolio")}
-            className="px-10 py-5 rounded-2xl border border-white/25 bg-white/5 text-white font-bold text-lg hover:bg-white/10 hover:border-white/40 transition-all duration-300 inline-flex items-center justify-center gap-2"
-          >
+           <button
+    type="button"
+    onClick={() => onNavigate("portfolio")}
+    className="
+      group inline-flex items-center justify-center
+      px-7 py-3.5
+      text-[13.5px] md:text-[14px]
+      font-medium tracking-wide
+      rounded-full
+      text-white
+      border border-white/25
+      transition-all duration-300
+      hover:border-white/50
+      focus:outline-none
+    "
+  >
+    <span className="flex items-center gap-2">
             View Work
-            <ArrowRight className="w-6 h-6" />
+             <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+            </span>
           </button>
         </div>
 
@@ -351,7 +387,8 @@ export default function Services({ onNavigate }) {
 
       
       {/* CINEMATIC SERVICES STAGE (Ultra-Unique / No Cards) */}
-<section className="relative py-28 overflow-hidden bg-white">
+<section className="relative pt-16 pb-28 overflow-hidden bg-white">
+
   {/* background theatre */}
   <div className="absolute inset-0 pointer-events-none">
     {/* soft spotlight */}
@@ -569,22 +606,52 @@ export default function Services({ onNavigate }) {
             {/* actions */}
             <div className="mt-14 flex flex-col sm:flex-row gap-4">
               <button
-                type="button"
-                onClick={() => onNavigate("contact")}
-                className="group px-8 py-4 rounded-xl bg-[#206ca6] text-white font-bold hover:bg-[#1a5685] transition-all duration-300 inline-flex items-center justify-center gap-2 shadow-lg shadow-[#206ca6]/20"
-              >
+  type="button"
+  onClick={() => onNavigate("contact")}
+  className="
+    group relative inline-flex items-center justify-center gap-3
+    px-10 py-4
+    rounded-full
+    bg-[#206ca6] text-white font-semibold
+    transition-all duration-300
+    hover:bg-[#1a5685]
+    hover:shadow-xl hover:shadow-[#206ca6]/30
+  "
+>
                 Talk to Us About This
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
+                <ArrowRight className="relative z-10 w-5 h-5 transition-transform group-hover:translate-x-1" />
+</button>
 
               <button
-                type="button"
-                onClick={() => onNavigate("portfolio")}
-                className="px-8 py-4 rounded-xl border border-gray-300 text-gray-900 font-bold hover:border-[#206ca6]/50 hover:text-[#206ca6] transition-all duration-300 inline-flex items-center justify-center gap-2"
-              >
+  type="button"
+  onClick={() => onNavigate("portfolio")}
+  className="
+    group relative inline-flex items-center justify-center gap-3
+    px-10 py-4
+    rounded-full
+    text-gray-900 font-semibold
+    backdrop-blur-md
+    bg-white/30
+    border border-gray-900/15
+    transition-all duration-300
+    hover:bg-white/50
+    hover:border-[#206ca6]/40
+    hover:text-[#206ca6]
+  "
+>
                 See Related Work
-                <ArrowRight className="w-5 h-5" />
-              </button>
+                <ArrowRight className="relative z-10 w-5 h-5 transition-transform group-hover:translate-x-1" />
+
+  {/* Inner highlight */}
+  <span
+    aria-hidden
+    className="
+      absolute inset-0 rounded-full
+      bg-gradient-to-b from-white/60 to-transparent
+      opacity-70
+    "
+  />
+</button>
             </div>
           </div>
         </div>

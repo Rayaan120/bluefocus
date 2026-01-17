@@ -11,7 +11,7 @@ export default function Bulletin({ onNavigate }) {
   };
 
   return (
-    <div className="min-h-screen bg-white pt-20">
+    <div className="min-h-screen bg-white">
       {/* COMING SOON — Cinematic */}
       <section className="relative overflow-hidden bg-gradient-to-br from-[#081527] via-[#0d3d5c] to-[#081527]">
         {/* Background art */}
@@ -72,12 +72,7 @@ export default function Bulletin({ onNavigate }) {
           <div className="grid lg:grid-cols-12 gap-14 items-center">
             {/* Left */}
             <div className="lg:col-span-7">
-              <div className="inline-flex items-center gap-3 bg-white/10 border border-white/15 backdrop-blur text-white/85 px-6 py-3 rounded-full text-sm font-semibold">
-                <Newspaper className="w-4 h-4 text-[#b1b4ad]" />
-                Bulletin Page
-                <span className="w-1.5 h-1.5 rounded-full bg-[#206ca6]" />
-                Coming Soon
-              </div>
+             
 
               <h1 className="mt-8 text-5xl md:text-7xl font-extrabold text-white leading-[1.02]">
                 Something

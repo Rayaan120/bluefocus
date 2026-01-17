@@ -41,7 +41,7 @@ export default function Contact({ onNavigate }) {
   };
 
   return (
-    <div className="min-h-screen bg-white pt-20">
+    <div className="min-h-screen bg-white">
      {/* CONTACT HERO — Cinematic / Unique */}
 <section className="relative overflow-hidden bg-gradient-to-br from-[#06111f] via-[#0d3d5c] to-[#06111f] pt-28 pb-24">
   {/* background art */}
@@ -75,10 +75,7 @@ export default function Contact({ onNavigate }) {
     <div className="grid lg:grid-cols-12 gap-14 items-center">
       {/* LEFT: copy */}
       <div className="lg:col-span-7">
-        <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur text-white/85 px-6 py-3 rounded-full text-sm font-semibold border border-white/15">
-          <span className="h-[2px] w-10 bg-gradient-to-r from-[#206ca6] to-[#b1b4ad]" />
-          Get in touch
-        </div>
+       
 
         <h1 className="mt-8 text-5xl md:text-7xl font-extrabold text-white leading-[1.02]">
           Let’s start a

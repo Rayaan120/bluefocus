@@ -14,7 +14,7 @@ import { ArrowLeft, ArrowUpRight, CornerDownRight } from "lucide-react";
  */
 
 const BRAND = {
-  ART_HEIR: "Art Heir Events & Exhibitions",
+  
   BLUE_FOCUS: "Blue Focus",
 };
 
@@ -65,11 +65,7 @@ const fade = {
 };
 
 /* -------------------- 30 ART HEIR IMAGES (REPLACE) -------------------- */
-const ART_HEIR_IMAGES = Array.from({ length: 30 }).map((_, i) => ({
-  id: `ah-img-${i + 1}`,
-  image: `https://images.unsplash.com/photo-1526481280695-3c687fd643ed?auto=format&fit=crop&w=900&q=80&sig=${i}`,
-  title: `Art Heir Visual ${String(i + 1).padStart(2, "0")}`,
-}));
+
 
 /* -------------------- SAMPLE DATA (REPLACE WITH YOURS) -------------------- */
 const dataset = {
@@ -120,7 +116,7 @@ function demoList(prefix) {
 export default function PortfolioProjectsUltraBlueSections({
   onNavigate = () => {},
   data = dataset,
-  artHeirImages = ART_HEIR_IMAGES,
+  
 }) {
   /**
    * view:
@@ -131,7 +127,8 @@ export default function PortfolioProjectsUltraBlueSections({
    *  "blueExhibitionsSections"
    *  "blueList"
    */
-  const [view, setView] = useState("root");
+ const [view, setView] = useState("blueCats");
+
 
   const [blueCat, setBlueCat] = useState("Events");
 
@@ -143,17 +140,16 @@ export default function PortfolioProjectsUltraBlueSections({
   // list hover selection
   const [activeId, setActiveId] = useState(null);
 
-  // Art Heir hover image
-  const [hoverImage, setHoverImage] = useState(null);
+ 
 
-  const artHeirProjects = data[BRAND.ART_HEIR] || [];
+  
   const blue = data[BRAND.BLUE_FOCUS] || {};
 
   const eventsObj = blue?.Events || {};
   const exhibitionsObj = blue?.Exhibitions || {};
 
   const list = useMemo(() => {
-    if (view === "artheir") return artHeirProjects;
+   
 
     if (view === "blueList") {
       if (blueCat === "Events") return (eventsObj?.[eventSection] || []);
@@ -163,73 +159,53 @@ export default function PortfolioProjectsUltraBlueSections({
 
     return [];
   }, [
-    view,
-    artHeirProjects,
+    
     blue,
     blueCat,
     eventsObj,
     exhibitionsObj,
+    
     eventSection,
     exhibitionSection,
+    
   ]);
 
   const poster = useMemo(() => {
-    if (hoverImage) {
-      return {
-        id: hoverImage.id,
-        year: "—",
-        title: hoverImage.title || BRAND.ART_HEIR,
-        subtitle: "Art Heir Visual Gallery",
-        location: "—",
-        date: "—",
-        image: hoverImage.image,
-      };
-    }
-    if (!list?.length) return null;
-    return list.find((p) => p.id === activeId) || list[0];
-  }, [hoverImage, list, activeId]);
+  if (!list?.length) return null;
+  return list.find((p) => p.id === activeId) || list[0];
+}, [list, activeId]);
+
 
   const headerLine =
-    view === "root"
-      ? "Select a studio to explore"
-      : view === "artheir"
-      ? `${BRAND.ART_HEIR} — Gallery (30)`
-      : view === "blueCats"
-      ? BRAND.BLUE_FOCUS
-      : view === "blueEventsSections"
-      ? `${BRAND.BLUE_FOCUS} — Events`
-      : view === "blueExhibitionsSections"
-      ? `${BRAND.BLUE_FOCUS} — Exhibitions`
-      : blueCat === "Events"
-      ? `${BRAND.BLUE_FOCUS} — Events • ${eventSection}`
-      : blueCat === "Exhibitions"
-      ? `${BRAND.BLUE_FOCUS} — Exhibitions • ${exhibitionSection}`
-      : `${BRAND.BLUE_FOCUS} — Kiosks`;
+  view === "blueCats"
+    ? "Blue Focus"
+    : view === "blueEventsSections"
+    ? "Blue Focus — Events"
+    : view === "blueExhibitionsSections"
+    ? "Blue Focus — Exhibitions"
+    : view === "blueKiosksSections"
+    ? "Blue Focus — Kiosks"
+    : blueCat === "Events"
+    ? `Events • ${eventSection}`
+    : blueCat === "Exhibitions"
+    ? `Exhibitions • ${exhibitionSection}`
+    : `Kiosks • ${kioskSection}`;
+
 
   const goBack = () => {
-    setHoverImage(null);
+  if (view === "blueEventsSections") return setView("blueCats");
+  if (view === "blueExhibitionsSections") return setView("blueCats");
+  if (view === "blueKiosksSections") return setView("blueCats");
 
-    if (view === "artheir") return setView("root");
-    if (view === "blueCats") return setView("root");
+  if (view === "blueList") {
+    if (blueCat === "Events") return setView("blueEventsSections");
+    if (blueCat === "Exhibitions") return setView("blueExhibitionsSections");
+    if (blueCat === "Kiosks") return setView("blueKiosksSections");
+  }
+};
 
-    if (view === "blueEventsSections") return setView("blueCats");
-    if (view === "blueExhibitionsSections") return setView("blueCats");
 
-    if (view === "blueList") {
-      if (blueCat === "Events") return setView("blueEventsSections");
-      if (blueCat === "Exhibitions") return setView("blueExhibitionsSections");
-      if (blueCat === "Kiosks") return setView("blueKiosksSections");
-      return setView("blueCats"); // kiosks list back to categories
-    }
-    if (view === "blueKiosksSections") return setView("blueCats");
-    setView("root");
-  };
-
-  const enterArtHeir = () => {
-    setView("artheir");
-    setHoverImage(null);
-    setActiveId(artHeirProjects?.[0]?.id ?? null);
-  };
+  
 
   const enterBlueFocus = () => {
     setView("blueCats");

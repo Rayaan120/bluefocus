@@ -163,19 +163,7 @@ function Hero({ onNavigate }) {
           {/* LEFT */}
           <div className="lg:col-span-7">
             {/* minimal top label */}
-            <div
-              className="inline-flex items-center gap-3 rounded-full border border-white/12 bg-white/8 px-5 py-2 text-white/80 backdrop-blur-md"
-              style={{ animation: "bfIn 700ms ease-out both" }}
-            >
-              <Award className="w-4 h-4 text-white" />
-              <span className="text-sm font-semibold tracking-wide">
-                15+ Years of Excellence in Dubai
-              </span>
-              <span className="h-4 w-px bg-white/15 mx-1" />
-              <span className="text-xs uppercase tracking-[0.32em] text-white/65">
-                Events • Exhibitions • Experiences
-              </span>
-            </div>
+           
 
             <div className="mt-8 max-w-2xl" style={{ animation: "bfIn 900ms ease-out both" }}>
               {/* Signature halo behind headline (unique) */}
@@ -259,8 +247,8 @@ function Hero({ onNavigate }) {
               {/* Proof strip (no boxes) */}
               <div className="mt-12 grid grid-cols-3 gap-6 max-w-xl">
                 {[
-                  { big: "500+", small: "Events Delivered" },
-                  { big: "250+", small: "Happy Clients" },
+                  { big: "2000+", small: "Projects Delivered" },
+                  { big: "100%", small: "Happy Clients" },
                   { big: "15+", small: "Years Experience" },
                 ].map((m) => (
                   <div key={m.small} className="relative">
@@ -329,11 +317,14 @@ export default function Home({ onNavigate }) {
   <div className="absolute inset-0 pointer-events-none">
     <div className="absolute -top-28 left-1/2 -translate-x-1/2 w-[980px] h-[980px] bg-[#206ca6]/10 rounded-full blur-3xl" />
     <div className="absolute -bottom-40 right-[-160px] w-[680px] h-[680px] bg-[#b1b4ad]/18 rounded-full blur-3xl" />
-
+    
+    
     {/* Big watermark word */}
+    
     <div className="absolute top-10 left-1/2 -translate-x-1/2 text-[80px] sm:text-[120px] lg:text-[160px] font-extrabold tracking-tight text-gray-900/5 select-none whitespace-nowrap">
       BLUE FOCUS
     </div>
+    
 
     {/* Subtle lines */}
     <div className="absolute left-0 right-0 top-[140px] h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
@@ -364,12 +355,76 @@ export default function Home({ onNavigate }) {
         </span>
       </div>
     </div>
-
+    
     {/* Main composition */}
     <div className="mt-10 grid lg:grid-cols-12 gap-14 items-start">
+
+      
       {/* Left: headline + pull quote */}
+      
       <div className="lg:col-span-5">
         <div className="mb-8">
+          <svg
+  viewBox="0 0 800 800"
+  className="absolute -inset-[180px] w-[800px] h-[800px] opacity-[0.14]"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <radialGradient id="bfSoft" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stopColor="#206ca6" stopOpacity="0.25" />
+      <stop offset="100%" stopColor="#206ca6" stopOpacity="0" />
+    </radialGradient>
+  </defs>
+
+  {/* Soft central field */}
+  <circle cx="400" cy="400" r="300" fill="url(#bfSoft)" />
+
+  {/* Primary orbit */}
+  <ellipse
+    cx="400"
+    cy="400"
+    rx="420"
+    ry="160"
+    stroke="#206ca6"
+    strokeWidth="2"
+    opacity="0.9"
+  />
+
+  {/* Secondary dashed orbit */}
+  <ellipse
+    cx="400"
+    cy="400"
+    rx="260"
+    ry="360"
+    stroke="#1a5685"
+    strokeWidth="1.5"
+    strokeDasharray="8 16"
+    opacity="0.6"
+  />
+
+  {/* Single trajectory line */}
+  <path
+    d="M120 160 L340 400 L620 640"
+    stroke="#b1b4ad"
+    strokeWidth="2"
+    strokeLinecap="round"
+    opacity="0.9"
+  />
+
+  {/* Minimal anchor points */}
+  {[
+    [340, 400],
+    [120, 160],
+    [620, 640],
+  ].map(([cx, cy], i) => (
+    <g key={i}>
+      <circle cx={cx} cy={cy} r="5" fill="#206ca6" />
+      <circle cx={cx} cy={cy} r="14" fill="#206ca6" opacity="0.15" />
+    </g>
+  ))}
+</svg>
+
   <img
     src="/image/bluefocus-logo.png"
     alt="Blue Focus Logo"
@@ -414,22 +469,54 @@ export default function Home({ onNavigate }) {
         {/* CTAs (simple, premium) */}
         <div className="mt-10 flex flex-col sm:flex-row gap-4">
           <button
-            type="button"
-            onClick={() => onNavigate("contact")}
-            className="group px-8 py-4 rounded-xl bg-[#206ca6] text-white font-semibold hover:bg-[#1a5685] transition-colors inline-flex items-center justify-center gap-2 shadow-lg shadow-[#206ca6]/20"
-          >
-            Start Your Project
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </button>
+  type="button"
+  onClick={() => onNavigate("contact")}
+  className="
+    group relative inline-flex items-center justify-center gap-3
+    px-10 py-4
+    rounded-full
+    bg-[#206ca6] text-white font-semibold
+    transition-all duration-300
+    hover:bg-[#1a5685]
+    hover:shadow-xl hover:shadow-[#206ca6]/30
+  "
+>
+  <span className="relative z-10">Start Your Project</span>
+  <ArrowRight className="relative z-10 w-5 h-5 transition-transform group-hover:translate-x-1" />
+</button>
 
-          <button
-            type="button"
-            onClick={() => onNavigate("portfolio")}
-            className="px-8 py-4 rounded-xl bg-transparent text-gray-900 font-semibold border border-gray-300 hover:border-[#206ca6]/50 hover:text-[#206ca6] transition-colors inline-flex items-center justify-center gap-2"
-          >
-            See Our Work
-            <ArrowRight className="w-5 h-5" />
-          </button>
+
+         <button
+  type="button"
+  onClick={() => onNavigate("portfolio")}
+  className="
+    group relative inline-flex items-center justify-center gap-3
+    px-10 py-4
+    rounded-full
+    text-gray-900 font-semibold
+    backdrop-blur-md
+    bg-white/30
+    border border-gray-900/15
+    transition-all duration-300
+    hover:bg-white/50
+    hover:border-[#206ca6]/40
+    hover:text-[#206ca6]
+  "
+>
+  <span className="relative z-10">See Our Work</span>
+  <ArrowRight className="relative z-10 w-5 h-5 transition-transform group-hover:translate-x-1" />
+
+  {/* Inner highlight */}
+  <span
+    aria-hidden
+    className="
+      absolute inset-0 rounded-full
+      bg-gradient-to-b from-white/60 to-transparent
+      opacity-70
+    "
+  />
+</button>
+
         </div>
       </div>
 
@@ -504,11 +591,11 @@ export default function Home({ onNavigate }) {
         {/* Minimal metrics row (no boxes) */}
 <div className="mt-12 flex flex-wrap items-center gap-x-12 gap-y-4 text-gray-600">
   <div className="flex items-baseline gap-3">
-    <span className="text-4xl font-extrabold text-gray-900">500+</span>
-    <span className="text-sm tracking-wide">Events</span>
+    <span className="text-4xl font-extrabold text-gray-900">2000+</span>
+    <span className="text-sm tracking-wide">Projects</span>
   </div>
   <div className="flex items-baseline gap-3">
-    <span className="text-4xl font-extrabold text-gray-900">250+</span>
+    <span className="text-4xl font-extrabold text-gray-900">100%</span>
     <span className="text-sm tracking-wide">Clients</span>
   </div>
   <div className="flex items-baseline gap-3">
@@ -563,80 +650,103 @@ export default function Home({ onNavigate }) {
 
     {/* Constellation canvas */}
     <div className="relative z-10 mt-6">
-      <svg
-        viewBox="0 0 1000 320"
-        className="w-full h-[220px] lg:h-[250px]"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        {/* soft routes */}
-        <path
-          d="M90 250 C 220 120, 340 120, 470 170 C 610 225, 720 90, 910 120"
-          stroke="rgba(32,108,166,0.25)"
-          strokeWidth="3"
-          strokeLinecap="round"
-        />
-        <path
-          d="M120 120 C 260 210, 360 240, 520 220 C 690 195, 760 250, 900 260"
-          stroke="rgba(177,180,173,0.25)"
-          strokeWidth="2"
-          strokeLinecap="round"
-        />
+     <svg
+  viewBox="0 0 1000 320"
+  className="w-full h-[220px] lg:h-[250px]"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  {/* orbital ring */}
+  <ellipse
+    cx="500"
+    cy="160"
+    rx="360"
+    ry="110"
+    stroke="rgba(32,108,166,0.25)"
+    strokeWidth="2"
+  />
 
-        {/* central hub */}
-        <circle cx="500" cy="165" r="10" fill="rgba(32,108,166,0.95)" />
-        <circle cx="500" cy="165" r="22" fill="rgba(32,108,166,0.14)" />
-        <circle cx="500" cy="165" r="34" fill="rgba(32,108,166,0.08)" />
-        <circle cx="500" cy="165" r="34" stroke="rgba(32,108,166,0.18)" />
+  {/* secondary orbit */}
+  <ellipse
+    cx="500"
+    cy="160"
+    rx="280"
+    ry="80"
+    stroke="rgba(177,180,173,0.25)"
+    strokeWidth="1.5"
+  />
 
-        {/* node helper */}
-        {/*
-          Nodes are arranged to visually fill the right pocket.
-          Keep these as-is to avoid “empty” feeling.
-        */}
-        {/* Nodes + labels */}
-        <g>
-          {/* node 1 */}
-          <circle cx="120" cy="120" r="6" fill="rgba(32,108,166,0.95)" />
-          <circle cx="120" cy="120" r="16" fill="rgba(32,108,166,0.10)" />
-          <text x="150" y="126" fontSize="16" fill="#111827" fontWeight="700">
-            Exhibitions & Stands
-          </text>
+  {/* central hub */}
+  <circle cx="500" cy="160" r="10" fill="rgba(32,108,166,1)" />
+  <circle cx="500" cy="160" r="26" fill="rgba(32,108,166,0.14)" />
+  <circle cx="500" cy="160" r="40" fill="rgba(32,108,166,0.08)" />
 
-          {/* node 2 */}
-          <circle cx="90" cy="250" r="6" fill="rgba(32,108,166,0.95)" />
-          <circle cx="90" cy="250" r="16" fill="rgba(32,108,166,0.10)" />
-          <text x="120" y="256" fontSize="16" fill="#111827" fontWeight="700">
-            Corporate Events
-          </text>
+  <text
+    x="500"
+    y="190"
+    fontSize="12"
+    fill="rgba(17,24,39,0.55)"
+    letterSpacing="3"
+    textAnchor="middle"
+  >
+    HUB
+  </text>
 
-          {/* node 3 */}
-          <circle cx="720" cy="90" r="6" fill="rgba(32,108,166,0.95)" />
-          <circle cx="720" cy="90" r="16" fill="rgba(32,108,166,0.10)" />
-          <text x="750" y="96" fontSize="16" fill="#111827" fontWeight="700">
-            Brand Activations
-          </text>
+  {/* nodes */}
 
-          {/* node 4 */}
-          <circle cx="910" cy="120" r="6" fill="rgba(32,108,166,0.95)" />
-          <circle cx="910" cy="120" r="16" fill="rgba(32,108,166,0.10)" />
-          <text x="680" y="150" fontSize="16" fill="#111827" fontWeight="700">
-            Production & Build
-          </text>
+  {/* Exhibitions */}
+  <g>
+    <circle cx="180" cy="160" r="6" fill="rgba(32,108,166,0.95)" />
+    <circle cx="180" cy="160" r="16" fill="rgba(32,108,166,0.10)" />
+    <text x="110" y="155" fontSize="16" fill="#111827" fontWeight="700">
+      Exhibitions & Stands
+    </text>
+  </g>
 
-          {/* node 5 */}
-          <circle cx="900" cy="260" r="6" fill="rgba(177,180,173,0.95)" />
-          <circle cx="900" cy="260" r="16" fill="rgba(177,180,173,0.14)" />
-          <text x="620" y="292" fontSize="16" fill="#111827" fontWeight="700">
-            Full On-Ground Delivery
-          </text>
+  {/* Corporate Events */}
+  <g>
+    <circle cx="310" cy="80" r="6" fill="rgba(32,108,166,0.95)" />
+    <circle cx="310" cy="80" r="16" fill="rgba(32,108,166,0.10)" />
+    <text x="240" y="60" fontSize="16" fill="#111827" fontWeight="700">
+      Corporate Events
+    </text>
+  </g>
 
-          {/* micro caption near hub */}
-          <text x="520" y="170" fontSize="12" fill="rgba(17,24,39,0.55)" letterSpacing="3">
-            HUB
-          </text>
-        </g>
-      </svg>
+  {/* Brand Activations */}
+  <g>
+    <circle cx="690" cy="80" r="6" fill="rgba(32,108,166,0.95)" />
+    <circle cx="690" cy="80" r="16" fill="rgba(32,108,166,0.10)" />
+    <text x="720" y="60" fontSize="16" fill="#111827" fontWeight="700">
+      Brand Activations
+    </text>
+  </g>
+
+  {/* Production */}
+  <g>
+    <circle cx="820" cy="160" r="6" fill="rgba(32,108,166,0.95)" />
+    <circle cx="820" cy="160" r="16" fill="rgba(32,108,166,0.10)" />
+    <text x="690" y="155" fontSize="16" fill="#111827" fontWeight="700">
+      Production & Build
+    </text>
+  </g>
+
+  {/* Delivery */}
+  <g>
+    <circle cx="500" cy="260" r="6" fill="rgba(177,180,173,0.95)" />
+    <circle cx="500" cy="260" r="16" fill="rgba(177,180,173,0.14)" />
+    <text
+      x="500"
+      y="300"
+      fontSize="16"
+      fill="#111827"
+      fontWeight="700"
+      textAnchor="middle"
+    >
+      Full On-Ground Delivery
+    </text>
+  </g>
+</svg>
+
 
       {/* bottom micro-proof line (anchors the area so it never feels empty) */}
       <div className="mt-2 flex flex-wrap items-center gap-x-8 gap-y-2 text-xs tracking-[0.26em] uppercase text-gray-400">
@@ -733,22 +843,52 @@ export default function Home({ onNavigate }) {
     {/* Bottom actions */}
     <div className="mt-14 flex flex-col sm:flex-row gap-4">
       <button
-        type="button"
-        onClick={() => onNavigate("services")}
-        className="group px-8 py-4 rounded-xl bg-[#206ca6] text-white font-semibold hover:bg-[#1a5685] transition-colors inline-flex items-center justify-center gap-2 shadow-lg shadow-[#206ca6]/20"
-      >
+  type="button"
+  onClick={() => onNavigate("contact")}
+  className="
+    group relative inline-flex items-center justify-center gap-3
+    px-10 py-4
+    rounded-full
+    bg-[#206ca6] text-white font-semibold
+    transition-all duration-300
+    hover:bg-[#1a5685]
+    hover:shadow-xl hover:shadow-[#206ca6]/30
+  "
+>
         Explore Services
-        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-      </button>
+       <ArrowRight className="relative z-10 w-5 h-5 transition-transform group-hover:translate-x-1" />
+</button>
 
       <button
-        type="button"
-        onClick={() => onNavigate("contact")}
-        className="px-8 py-4 rounded-xl bg-transparent text-gray-900 font-semibold border border-gray-300 hover:border-[#206ca6]/50 hover:text-[#206ca6] transition-colors inline-flex items-center justify-center gap-2"
-      >
+  type="button"
+  onClick={() => onNavigate("portfolio")}
+  className="
+    group relative inline-flex items-center justify-center gap-3
+    px-10 py-4
+    rounded-full
+    text-gray-900 font-semibold
+    backdrop-blur-md
+    bg-white/30
+    border border-gray-900/15
+    transition-all duration-300
+    hover:bg-white/50
+    hover:border-[#206ca6]/40
+    hover:text-[#206ca6]
+  "
+>
         Talk to Our Team
-        <ArrowRight className="w-5 h-5" />
-      </button>
+        <ArrowRight className="relative z-10 w-5 h-5 transition-transform group-hover:translate-x-1" />
+
+  {/* Inner highlight */}
+  <span
+    aria-hidden
+    className="
+      absolute inset-0 rounded-full
+      bg-gradient-to-b from-white/60 to-transparent
+      opacity-70
+    "
+  />
+</button>
     </div>
   </div>
 </section>
@@ -796,22 +936,52 @@ export default function Home({ onNavigate }) {
 
             <div className="mt-10 flex flex-col gap-4">
               <button
-                type="button"
-                onClick={() => onNavigate("contact")}
-                className="group px-8 py-4 rounded-xl bg-[#206ca6] text-white font-semibold hover:bg-[#1a5685] transition-colors inline-flex items-center justify-center gap-2 shadow-lg shadow-[#206ca6]/20"
-              >
+  type="button"
+  onClick={() => onNavigate("contact")}
+  className="
+    group relative inline-flex items-center justify-center gap-3
+    px-10 py-4
+    rounded-full
+    bg-[#206ca6] text-white font-semibold
+    transition-all duration-300
+    hover:bg-[#1a5685]
+    hover:shadow-xl hover:shadow-[#206ca6]/30
+  "
+>
                 Request a Proposal
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
+                <ArrowRight className="relative z-10 w-5 h-5 transition-transform group-hover:translate-x-1" />
+</button>
 
               <button
-                type="button"
-                onClick={() => onNavigate("services")}
-                className="px-8 py-4 rounded-xl bg-transparent text-gray-900 font-semibold border border-gray-300 hover:border-[#206ca6]/50 hover:text-[#206ca6] transition-colors inline-flex items-center justify-center gap-2"
-              >
+  type="button"
+  onClick={() => onNavigate("portfolio")}
+  className="
+    group relative inline-flex items-center justify-center gap-3
+    px-10 py-4
+    rounded-full
+    text-gray-900 font-semibold
+    backdrop-blur-md
+    bg-white/30
+    border border-gray-900/15
+    transition-all duration-300
+    hover:bg-white/50
+    hover:border-[#206ca6]/40
+    hover:text-[#206ca6]
+  "
+>
                 See Full Services
-                <ArrowRight className="w-5 h-5" />
-              </button>
+                <ArrowRight className="relative z-10 w-5 h-5 transition-transform group-hover:translate-x-1" />
+
+  {/* Inner highlight */}
+  <span
+    aria-hidden
+    className="
+      absolute inset-0 rounded-full
+      bg-gradient-to-b from-white/60 to-transparent
+      opacity-70
+    "
+  />
+</button>
             </div>
           </div>
         </div>
@@ -935,9 +1105,9 @@ export default function Home({ onNavigate }) {
           <div className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-3 text-white/70">
             <span className="font-semibold text-white">15+ years</span>
             <span className="opacity-40">•</span>
-            <span><span className="font-semibold text-white">500+</span> events delivered</span>
+            <span><span className="font-semibold text-white">2000+</span> projects delivered</span>
             <span className="opacity-40">•</span>
-            <span><span className="font-semibold text-white">250+</span> clients</span>
+            <span><span className="font-semibold text-white">100%</span> clients</span>
           </div>
         </div>
 

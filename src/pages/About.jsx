@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { Sparkles, Handshake, ShieldCheck, Headphones } from "lucide-react";
 import { MessageSquareText } from "lucide-react";
+import { motion } from "framer-motion";
 
 const ourTeamText = {
   title: "Our Team",
@@ -57,7 +58,8 @@ const visionParagraphs = [
 
 export default function About({ onNavigate }) {
   return (
-    <div className="min-h-screen bg-white pt-20">
+    <div className="min-h-screen bg-white">
+
       {/* HERO — Premium / Unique */}
 <div className="relative overflow-hidden bg-gradient-to-br from-gray-950 via-[#0d3550] to-gray-950">
   {/* Background: glow + grid + noise */}
@@ -78,20 +80,13 @@ export default function About({ onNavigate }) {
     </div>
   </div>
 
-  <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-28 lg:py-32">
+  <div className="relative max-w-7xl mx-auto px-6 lg:px-8 pt-4 lg:pt-8 pb-8 lg:pb-12">
+
     <div className="grid lg:grid-cols-12 gap-12 items-center">
       {/* LEFT */}
-      <div className="lg:col-span-7">
-        <div className="inline-flex items-center gap-3">
-          <span className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 px-5 py-2 text-sm font-semibold text-white/90 backdrop-blur">
-            ABOUT BLUE FOCUS
-            <span className="w-1.5 h-1.5 rounded-full bg-[#b1b4ad]" />
-          </span>
+      <div className="lg:col-span-7 pt-10 sm:pt-14 lg:pt-20">
 
-          <span className="hidden sm:inline-flex items-center gap-2 rounded-full bg-[#206ca6]/20 border border-[#206ca6]/40 px-4 py-2 text-sm font-semibold text-white/90 backdrop-blur">
-            Since 2009
-          </span>
-        </div>
+      
 
         <h1 className="mt-7 text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-[1.03]">
           Crafting Memorable
@@ -109,21 +104,46 @@ export default function About({ onNavigate }) {
         {/* CTA row */}
         <div className="mt-10 flex flex-col sm:flex-row gap-4">
           <button
-            type="button"
-            onClick={() => onNavigate("contact")}
-            className="group px-8 py-4 rounded-xl bg-white text-gray-950 font-bold inline-flex items-center justify-center gap-2 hover:shadow-2xl hover:shadow-white/10 transition-all"
-          >
+    type="button"
+    onClick={() => onNavigate("contact")}
+    className="
+      group inline-flex items-center justify-center
+      px-7 py-3.5
+      text-[13.5px] md:text-[14px]
+      font-semibold tracking-wide
+      rounded-full
+      bg-white text-[#071a2a]
+      transition-all duration-300
+      hover:bg-white/90
+      focus:outline-none
+    "
+  >
+          <span className="flex items-center gap-2">
             Get in Touch
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+            </span>
           </button>
 
-          <button
-            type="button"
-            onClick={() => onNavigate("portfolio")}
-            className="px-8 py-4 rounded-xl border border-white/25 text-white font-bold hover:border-white/50 hover:bg-white/5 transition-all inline-flex items-center justify-center gap-2"
-          >
+           <button
+    type="button"
+    onClick={() => onNavigate("portfolio")}
+    className="
+      group inline-flex items-center justify-center
+      px-7 py-3.5
+      text-[13.5px] md:text-[14px]
+      font-medium tracking-wide
+      rounded-full
+      text-white
+      border border-white/25
+      transition-all duration-300
+      hover:border-white/50
+      focus:outline-none
+    "
+  >
+    <span className="flex items-center gap-2">
             View Our Work
-            <ArrowRight className="w-5 h-5" />
+            <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+            </span>
           </button>
         </div>
 
@@ -176,51 +196,94 @@ export default function About({ onNavigate }) {
 
               {/* Rings / arcs */}
               <div className="mt-7 relative h-56 sm:h-60 rounded-2xl bg-gradient-to-br from-white/8 to-white/3 border border-white/10 overflow-hidden">
-                <svg
-                  viewBox="0 0 600 280"
-                  className="absolute inset-0 w-full h-full"
-                  aria-hidden="true"
-                >
-                  <defs>
-                    <linearGradient id="arc" x1="0" y1="0" x2="1" y2="1">
-                      <stop offset="0%" stopColor="#206ca6" stopOpacity="0.95" />
-                      <stop offset="55%" stopColor="#ffffff" stopOpacity="0.35" />
-                      <stop offset="100%" stopColor="#b1b4ad" stopOpacity="0.85" />
-                    </linearGradient>
-                  </defs>
+               <svg
+  viewBox="0 0 600 280"
+  className="absolute inset-0 w-full h-full"
+  aria-hidden="true"
+>
+  <defs>
+    <linearGradient id="arc" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stopColor="#206ca6" stopOpacity="0.95" />
+      <stop offset="50%" stopColor="#ffffff" stopOpacity="0.35" />
+      <stop offset="100%" stopColor="#b1b4ad" stopOpacity="0.85" />
+    </linearGradient>
+  </defs>
 
-                  <path
-                    d="M70 220 C 170 50, 430 50, 530 220"
-                    fill="none"
-                    stroke="url(#arc)"
-                    strokeWidth="10"
-                    strokeLinecap="round"
-                    opacity="0.9"
-                  />
-                  <path
-                    d="M110 220 C 190 90, 410 90, 490 220"
-                    fill="none"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    opacity="0.25"
-                    strokeDasharray="7 10"
-                  />
-                  <circle cx="70" cy="220" r="7" fill="#206ca6" />
-                  <circle cx="530" cy="220" r="7" fill="#b1b4ad" />
-                </svg>
+  {/* Main arc */}
+  <motion.path
+  d="M70 220 C 170 50, 430 50, 530 220"
+  fill="none"
+  stroke="url(#arc)"
+  strokeWidth="10"
+  strokeLinecap="round"
+  initial={{ pathLength: 0 }}
+  animate={{ pathLength: 1 }}
+  transition={{
+    duration: 1.6,
+    ease: "easeInOut",
+  }}
+/>
 
-                {/* mini labels */}
-                <div className="absolute left-5 top-5 rounded-full bg-white/10 border border-white/20 px-3 py-1 text-xs font-semibold text-white/80">
-                  Strategy
-                </div>
-                <div className="absolute right-5 top-5 rounded-full bg-white/10 border border-white/20 px-3 py-1 text-xs font-semibold text-white/80">
-                  Execution
-                </div>
-                <div className="absolute bottom-5 left-1/2 -translate-x-1/2 rounded-full bg-[#206ca6]/20 border border-[#206ca6]/30 px-4 py-2 text-xs font-semibold text-white">
-                  Precision • Passion • Impact
-                </div>
-              </div>
+  {/* Dotted guide */}
+  <path
+    d="M110 220 C 190 90, 410 90, 490 220"
+    fill="none"
+    stroke="white"
+    strokeWidth="2"
+    strokeLinecap="round"
+    opacity="0.25"
+    strokeDasharray="7 10"
+  />
+
+  {/* Journey points */}
+  {[
+  { cx: 70, cy: 220, delay: 0.2 },   // Concept
+  { cx: 170, cy: 125, delay: 0.5 },  // Strategy
+  { cx: 300, cy: 90, delay: 0.8 },   // Execution
+  { cx: 430, cy: 125, delay: 1.1 },  // Delivery
+  { cx: 530, cy: 220, delay: 1.4 },  // After-Services
+].map((p, i) => (
+  <motion.circle
+    key={i}
+    cx={p.cx}
+    cy={p.cy}
+    r="7"
+    fill={i === 2 ? "#ffffff" : "#206ca6"}
+    initial={{ scale: 0, opacity: 0 }}
+    animate={{ scale: 1, opacity: 1 }}
+    transition={{
+      delay: p.delay,
+      type: "spring",
+      stiffness: 160,
+      damping: 14,
+    }}
+  />
+))}
+
+</svg>
+
+
+              {/* Stage labels */}
+<div className="absolute left-4 bottom-4 text-xs font-semibold text-white/70">
+  Concept
+</div>
+
+<div className="absolute left-24 top-6 text-xs font-semibold text-white/70">
+  Strategy
+</div>
+
+<div className="absolute left-1/2 top-3 -translate-x-1/2 text-xs font-semibold text-white/90">
+  Execution
+</div>
+
+<div className="absolute right-24 top-6 text-xs font-semibold text-white/70">
+  Delivery
+</div>
+
+<div className="absolute right-4 bottom-4 text-xs font-semibold text-white/70">
+  After-Services
+</div>
+</div>
 
               {/* quick stats */}
               <div className="mt-7 grid grid-cols-3 gap-3">
@@ -257,7 +320,7 @@ export default function About({ onNavigate }) {
           
         
     {/* OUR VISION — Magazine Spread (Unique & Different) */}
-<section className="relative py-32 bg-white overflow-hidden">
+<section className="relative mt-16 pt-0 pb-24 bg-white overflow-hidden">
   {/* Background art */}
   <div className="absolute inset-0 pointer-events-none">
     <div className="absolute -top-56 left-1/2 -translate-x-1/2 w-[1100px] h-[1100px] bg-[#206ca6]/10 rounded-full blur-3xl" />
@@ -384,22 +447,53 @@ export default function About({ onNavigate }) {
           {/* CTA strip (not a card) */}
           <div className="mt-12 flex flex-col sm:flex-row gap-4">
             <button
-              type="button"
-              onClick={() => onNavigate("contact")}
-              className="group px-8 py-4 rounded-xl bg-[#206ca6] text-white font-bold hover:bg-[#1a5685] transition-all duration-300 inline-flex items-center justify-center gap-2 shadow-lg shadow-[#206ca6]/20"
-            >
+  type="button"
+  onClick={() => onNavigate("contact")}
+  className="
+    group relative inline-flex items-center justify-center gap-3
+    px-10 py-4
+    rounded-full
+    bg-[#206ca6] text-white font-semibold
+    transition-all duration-300
+    hover:bg-[#1a5685]
+    hover:shadow-xl hover:shadow-[#206ca6]/30
+  "
+>
+  
               Get in Touch
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
+               <ArrowRight className="relative z-10 w-5 h-5 transition-transform group-hover:translate-x-1" />
+</button>
 
-            <button
-              type="button"
-              onClick={() => onNavigate("portfolio")}
-              className="px-8 py-4 rounded-xl border border-gray-300 text-gray-900 font-bold hover:border-[#206ca6]/50 hover:text-[#206ca6] transition-all duration-300 inline-flex items-center justify-center gap-2"
-            >
+           <button
+  type="button"
+  onClick={() => onNavigate("portfolio")}
+  className="
+    group relative inline-flex items-center justify-center gap-3
+    px-10 py-4
+    rounded-full
+    text-gray-900 font-semibold
+    backdrop-blur-md
+    bg-white/30
+    border border-gray-900/15
+    transition-all duration-300
+    hover:bg-white/50
+    hover:border-[#206ca6]/40
+    hover:text-[#206ca6]
+  "
+>
               View Our Work
-              <ArrowRight className="w-5 h-5" />
-            </button>
+              <ArrowRight className="relative z-10 w-5 h-5 transition-transform group-hover:translate-x-1" />
+
+  {/* Inner highlight */}
+  <span
+    aria-hidden
+    className="
+      absolute inset-0 rounded-full
+      bg-gradient-to-b from-white/60 to-transparent
+      opacity-70
+    "
+  />
+</button>
           </div>
         </div>
       </div>
@@ -649,22 +743,52 @@ export default function About({ onNavigate }) {
     {/* Actions */}
     <div className="mt-16 flex flex-col sm:flex-row gap-4">
       <button
-        type="button"
-        onClick={() => onNavigate("contact")}
-        className="group px-8 py-4 rounded-xl bg-[#206ca6] text-white font-bold hover:bg-[#1a5685] transition-all duration-300 inline-flex items-center justify-center gap-2 shadow-lg shadow-[#206ca6]/20"
-      >
+  type="button"
+  onClick={() => onNavigate("contact")}
+  className="
+    group relative inline-flex items-center justify-center gap-3
+    px-10 py-4
+    rounded-full
+    bg-[#206ca6] text-white font-semibold
+    transition-all duration-300
+    hover:bg-[#1a5685]
+    hover:shadow-xl hover:shadow-[#206ca6]/30
+  "
+>
         Talk to Our Team
-        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-      </button>
+        <ArrowRight className="relative z-10 w-5 h-5 transition-transform group-hover:translate-x-1" />
+</button>
 
       <button
-        type="button"
-        onClick={() => onNavigate("portfolio")}
-        className="px-8 py-4 rounded-xl border border-gray-300 text-gray-900 font-bold hover:border-[#206ca6]/50 hover:text-[#206ca6] transition-all duration-300 inline-flex items-center justify-center gap-2"
-      >
+  type="button"
+  onClick={() => onNavigate("portfolio")}
+  className="
+    group relative inline-flex items-center justify-center gap-3
+    px-10 py-4
+    rounded-full
+    text-gray-900 font-semibold
+    backdrop-blur-md
+    bg-white/30
+    border border-gray-900/15
+    transition-all duration-300
+    hover:bg-white/50
+    hover:border-[#206ca6]/40
+    hover:text-[#206ca6]
+  "
+>
         See What We’ve Delivered
-        <ArrowRight className="w-5 h-5" />
-      </button>
+        <ArrowRight className="relative z-10 w-5 h-5 transition-transform group-hover:translate-x-1" />
+
+  {/* Inner highlight */}
+  <span
+    aria-hidden
+    className="
+      absolute inset-0 rounded-full
+      bg-gradient-to-b from-white/60 to-transparent
+      opacity-70
+    "
+  />
+</button>
     </div>
 
     <div className="mt-16 h-px w-full bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
