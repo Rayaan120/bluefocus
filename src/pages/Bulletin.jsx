@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ArrowRight, Bell, Sparkles, Mail, Newspaper } from "lucide-react";
 
 export default function Bulletin({ onNavigate }) {
@@ -9,7 +9,15 @@ export default function Bulletin({ onNavigate }) {
     // UI-only placeholder — wire this to EmailJS/DB later
     setEmail("");
   };
+useEffect(() => {
+    if (document.getElementById("zCU5sv5A4DOdf87pPt4E8")) return;
 
+    const script = document.createElement("script");
+    script.src = "https://www.chatbase.co/embed.min.js";
+    script.id = "zCU5sv5A4DOdf87pPt4E8"; // Replace with your actual bot ID if needed
+    script.defer = true;
+    document.body.appendChild(script);
+  }, []);
   return (
     <div className="min-h-screen bg-white">
       {/* COMING SOON — Cinematic */}
@@ -106,24 +114,51 @@ export default function Bulletin({ onNavigate }) {
               </div>
 
               {/* Buttons */}
-              <div className="mt-12 flex flex-col sm:flex-row gap-4">
-                <button
-                  type="button"
-                  onClick={() => onNavigate("contact")}
-                  className="group px-10 py-5 rounded-2xl bg-white text-[#206ca6] font-extrabold text-lg hover:shadow-2xl hover:shadow-white/15 transition-all duration-300 inline-flex items-center justify-center gap-2"
-                >
-                  Get Notified
-                  <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-                </button>
+              <div className="mt-10 flex flex-col sm:flex-row gap-3">
 
                 <button
-                  type="button"
-                  onClick={() => onNavigate("home")}
-                  className="px-10 py-5 rounded-2xl border border-white/25 bg-white/5 text-white font-bold text-lg hover:bg-white/10 hover:border-white/40 transition-all duration-300 inline-flex items-center justify-center gap-2"
-                >
-                  Back to Home
-                  <ArrowRight className="w-6 h-6" />
-                </button>
+  type="button"
+  onClick={() => onNavigate("contact")}
+  className="
+    group inline-flex items-center justify-center gap-2
+    px-8 py-[12px]
+    rounded-xl
+    bg-white/90 text-[#206ca6]
+    text-[14px] font-semibold
+    backdrop-blur-md
+    transition-all duration-300
+    hover:bg-white
+    hover:shadow-lg hover:shadow-white/20
+    focus:outline-none
+  "
+>
+  Get Notified
+  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+</button>
+
+
+               <button
+  type="button"
+  onClick={() => onNavigate("home")}
+  className="
+    group inline-flex items-center justify-center gap-2
+    px-8 py-[12px]
+    rounded-xl
+    bg-white/10
+    text-white
+    text-[14px] font-medium
+    backdrop-blur-md
+    border border-white/25
+    transition-all duration-300
+    hover:bg-white/15
+    hover:border-white/40
+    focus:outline-none
+  "
+>
+  Back to Home
+  <ArrowRight className="w-4 h-4" />
+</button>
+
               </div>
 
               <div className="mt-6 text-sm text-white/55">

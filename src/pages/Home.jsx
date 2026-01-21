@@ -88,6 +88,15 @@ function Hero({ onNavigate }) {
     }, 4500);
     return () => clearInterval(id);
   }, [slides.length]);
+  useEffect(() => {
+    if (document.getElementById("zCU5sv5A4DOdf87pPt4E8")) return;
+
+    const script = document.createElement("script");
+    script.src = "https://www.chatbase.co/embed.min.js";
+    script.id = "zCU5sv5A4DOdf87pPt4E8"; // Replace with your actual bot ID if needed
+    script.defer = true;
+    document.body.appendChild(script);
+  }, []);
 
   return (
    
@@ -196,51 +205,60 @@ function Hero({ onNavigate }) {
               </p>
 
               {/* CTAs */}
-              <div className="mt-10 flex flex-col sm:flex-row gap-4">
+              <div className="mt-8 flex flex-col sm:flex-row gap-2">
+
   {/* Primary */}
   <button
-    type="button"
-    onClick={() => onNavigate("contact")}
-    className="
-      group inline-flex items-center justify-center
-      px-7 py-3.5
-      text-[13.5px] md:text-[14px]
-      font-semibold tracking-wide
-      rounded-full
-      bg-white text-[#071a2a]
-      transition-all duration-300
-      hover:bg-white/90
-      focus:outline-none
-    "
-  >
-    <span className="flex items-center gap-2">
-      Start Your Project
-      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-    </span>
-  </button>
+  type="button"
+  onClick={() => onNavigate("contact")}
+  className="
+    group inline-flex items-center justify-center
+    px-6 py-[9px]
+    text-[13px]
+    font-medium
+    tracking-wide
+    rounded-full
+    bg-white/80 text-[#071a2a]
+    backdrop-blur-md
+    transition-all duration-300
+    hover:bg-white/90
+    hover:shadow-md hover:shadow-white/25
+    focus:outline-none
+  "
+>
+  <span className="flex items-center gap-2">
+    Start Project
+    <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+  </span>
+</button>
+
 
   {/* Secondary */}
   <button
-    type="button"
-    onClick={() => onNavigate("portfolio")}
-    className="
-      group inline-flex items-center justify-center
-      px-7 py-3.5
-      text-[13.5px] md:text-[14px]
-      font-medium tracking-wide
-      rounded-full
-      text-white
-      border border-white/25
-      transition-all duration-300
-      hover:border-white/50
-      focus:outline-none
-    "
-  >
-    <span className="flex items-center gap-2">
-      View Our Work
-      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-    </span>
-  </button>
+  type="button"
+  onClick={() => onNavigate("portfolio")}
+  className="
+    group inline-flex items-center justify-center
+    px-6 py-[9px]
+    text-[13px]
+    font-normal
+    tracking-wide
+    rounded-full
+    text-white/90
+    border border-white/25
+    backdrop-blur-md
+    transition-all duration-300
+    hover:border-white/45
+    hover:text-white
+    focus:outline-none
+  "
+>
+  <span className="flex items-center gap-2">
+    View Work
+    <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+  </span>
+</button>
+
 </div>
 
 
@@ -425,23 +443,34 @@ export default function Home({ onNavigate }) {
   ))}
 </svg>
 
+  {/* Heading FIRST */}
+<h2 className="text-5xl md:text-6xl font-extrabold leading-[1.03] text-gray-900">
+  A Warm Welcome
+  <span className="block mt-3 bg-gradient-to-r from-[#206ca6] via-[#1a5685] to-[#0d3d5c] bg-clip-text text-transparent">
+    from Blue Focus
+  </span>
+</h2>
+
+{/* Divider */}
+<div className="mt-6 flex items-center gap-4">
+  <div className="h-[4px] w-20 rounded-full bg-gradient-to-r from-[#206ca6] to-[#b1b4ad]" />
+  <div className="h-px flex-1 bg-gray-200" />
+</div>
+</div>
+{/* Logo SECOND */}
+{/* Logo — balanced scale */}
+<div className="mt-8">
   <img
     src="/image/bluefocus-logo.png"
     alt="Blue Focus Logo"
-    className="h-30 sm:h-29 w-auto"
+    className="
+      w-[260px] sm:w-[300px] md:w-[340px] lg:w-[380px]
+      h-auto
+    "
   />
-  <div className="mt-4 flex items-center gap-4">
-    <div className="h-[4px] w-20 rounded-full bg-gradient-to-r from-[#206ca6] to-[#b1b4ad]" />
-    <div className="h-px flex-1 bg-gray-200" />
-  </div>
 </div>
 
-        <h2 className="text-5xl md:text-6xl font-extrabold leading-[1.03] text-gray-900">
-          A Warm Welcome
-          <span className="block mt-3 bg-gradient-to-r from-[#206ca6] via-[#1a5685] to-[#0d3d5c] bg-clip-text text-transparent">
-            from Blue Focus
-          </span>
-        </h2>
+
 
         {/* Underline flourish */}
         <div className="mt-6 flex items-center gap-4">
@@ -467,55 +496,59 @@ export default function Home({ onNavigate }) {
         </div>
 
         {/* CTAs (simple, premium) */}
-        <div className="mt-10 flex flex-col sm:flex-row gap-4">
-          <button
+       <div className="mt-8 flex flex-col sm:flex-row gap-3">
+
+        <button
   type="button"
   onClick={() => onNavigate("contact")}
   className="
-    group relative inline-flex items-center justify-center gap-3
-    px-10 py-4
+    group relative inline-flex items-center justify-center gap-2
+    px-7 py-[10px]
     rounded-full
-    bg-[#206ca6] text-white font-semibold
+    bg-[#206ca6]/90 text-white
+    text-[13.5px] font-medium
+    backdrop-blur-md
     transition-all duration-300
-    hover:bg-[#1a5685]
-    hover:shadow-xl hover:shadow-[#206ca6]/30
+    hover:bg-[#1a5685]/95
+    hover:shadow-lg hover:shadow-[#206ca6]/25
+    focus:outline-none
   "
 >
   <span className="relative z-10">Start Your Project</span>
-  <ArrowRight className="relative z-10 w-5 h-5 transition-transform group-hover:translate-x-1" />
+  <ArrowRight className="relative z-10 w-4 h-4 transition-transform group-hover:translate-x-0.5" />
 </button>
 
 
-         <button
+
+      <button
   type="button"
   onClick={() => onNavigate("portfolio")}
   className="
-    group relative inline-flex items-center justify-center gap-3
-    px-10 py-4
+    group relative inline-flex items-center justify-center gap-2
+    px-7 py-[10px]
     rounded-full
-    text-gray-900 font-semibold
+    text-gray-900
+    text-[13.5px] font-medium
+    bg-white/25
     backdrop-blur-md
-    bg-white/30
-    border border-gray-900/15
+    border border-gray-900/20
     transition-all duration-300
-    hover:bg-white/50
-    hover:border-[#206ca6]/40
+    hover:bg-white/40
+    hover:border-[#206ca6]/45
     hover:text-[#206ca6]
+    focus:outline-none
   "
 >
   <span className="relative z-10">See Our Work</span>
-  <ArrowRight className="relative z-10 w-5 h-5 transition-transform group-hover:translate-x-1" />
+  <ArrowRight className="relative z-10 w-4 h-4 transition-transform group-hover:translate-x-0.5" />
 
-  {/* Inner highlight */}
+  {/* subtle inner sheen */}
   <span
     aria-hidden
-    className="
-      absolute inset-0 rounded-full
-      bg-gradient-to-b from-white/60 to-transparent
-      opacity-70
-    "
+    className="absolute inset-0 rounded-full bg-gradient-to-b from-white/40 to-transparent opacity-60"
   />
 </button>
+
 
         </div>
       </div>
@@ -841,54 +874,57 @@ export default function Home({ onNavigate }) {
     </div>
 
     {/* Bottom actions */}
-    <div className="mt-14 flex flex-col sm:flex-row gap-4">
+   <div className="mt-12 flex flex-col sm:flex-row gap-3">
+
       <button
   type="button"
   onClick={() => onNavigate("contact")}
   className="
-    group relative inline-flex items-center justify-center gap-3
-    px-10 py-4
+    group relative inline-flex items-center justify-center gap-2
+    px-7 py-[10px]
     rounded-full
-    bg-[#206ca6] text-white font-semibold
+    bg-[#206ca6]/90 text-white
+    text-[13.5px] font-medium
+    backdrop-blur-md
     transition-all duration-300
-    hover:bg-[#1a5685]
-    hover:shadow-xl hover:shadow-[#206ca6]/30
+    hover:bg-[#1a5685]/95
+    hover:shadow-lg hover:shadow-[#206ca6]/25
+    focus:outline-none
   "
 >
-        Explore Services
-       <ArrowRight className="relative z-10 w-5 h-5 transition-transform group-hover:translate-x-1" />
+  <span className="relative z-10">Explore Services</span>
+  <ArrowRight className="relative z-10 w-4 h-4 transition-transform group-hover:translate-x-0.5" />
 </button>
 
-      <button
+
+     <button
   type="button"
   onClick={() => onNavigate("portfolio")}
   className="
-    group relative inline-flex items-center justify-center gap-3
-    px-10 py-4
+    group relative inline-flex items-center justify-center gap-2
+    px-7 py-[10px]
     rounded-full
-    text-gray-900 font-semibold
+    text-gray-900
+    text-[13.5px] font-medium
+    bg-white/25
     backdrop-blur-md
-    bg-white/30
-    border border-gray-900/15
+    border border-gray-900/20
     transition-all duration-300
-    hover:bg-white/50
-    hover:border-[#206ca6]/40
+    hover:bg-white/40
+    hover:border-[#206ca6]/45
     hover:text-[#206ca6]
+    focus:outline-none
   "
 >
-        Talk to Our Team
-        <ArrowRight className="relative z-10 w-5 h-5 transition-transform group-hover:translate-x-1" />
+  <span className="relative z-10">Talk to Our Team</span>
+  <ArrowRight className="relative z-10 w-4 h-4 transition-transform group-hover:translate-x-0.5" />
 
-  {/* Inner highlight */}
   <span
     aria-hidden
-    className="
-      absolute inset-0 rounded-full
-      bg-gradient-to-b from-white/60 to-transparent
-      opacity-70
-    "
+    className="absolute inset-0 rounded-full bg-gradient-to-b from-white/40 to-transparent opacity-60"
   />
 </button>
+
     </div>
   </div>
 </section>
@@ -934,54 +970,58 @@ export default function Home({ onNavigate }) {
               under one roof.
             </p>
 
-            <div className="mt-10 flex flex-col gap-4">
-              <button
+            <div className="mt-8 flex flex-col gap-3">
+
+             <button
   type="button"
   onClick={() => onNavigate("contact")}
   className="
-    group relative inline-flex items-center justify-center gap-3
-    px-10 py-4
+    group relative inline-flex items-center justify-center gap-2
+    px-7 py-[10px]
     rounded-full
-    bg-[#206ca6] text-white font-semibold
+    bg-[#206ca6]/90 text-white
+    text-[13.5px] font-medium
+    backdrop-blur-md
     transition-all duration-300
-    hover:bg-[#1a5685]
-    hover:shadow-xl hover:shadow-[#206ca6]/30
+    hover:bg-[#1a5685]/95
+    hover:shadow-lg hover:shadow-[#206ca6]/25
+    focus:outline-none
   "
 >
-                Request a Proposal
-                <ArrowRight className="relative z-10 w-5 h-5 transition-transform group-hover:translate-x-1" />
+  <span className="relative z-10">Request a Proposal</span>
+  <ArrowRight className="relative z-10 w-4 h-4 transition-transform group-hover:translate-x-0.5" />
 </button>
 
-              <button
+
+             <button
   type="button"
   onClick={() => onNavigate("portfolio")}
   className="
-    group relative inline-flex items-center justify-center gap-3
-    px-10 py-4
+    group relative inline-flex items-center justify-center gap-2
+    px-7 py-[10px]
     rounded-full
-    text-gray-900 font-semibold
+    text-gray-900
+    text-[13.5px] font-medium
+    bg-white/25
     backdrop-blur-md
-    bg-white/30
-    border border-gray-900/15
+    border border-gray-900/20
     transition-all duration-300
-    hover:bg-white/50
-    hover:border-[#206ca6]/40
+    hover:bg-white/40
+    hover:border-[#206ca6]/45
     hover:text-[#206ca6]
+    focus:outline-none
   "
 >
-                See Full Services
-                <ArrowRight className="relative z-10 w-5 h-5 transition-transform group-hover:translate-x-1" />
+  <span className="relative z-10">See Full Services</span>
+  <ArrowRight className="relative z-10 w-4 h-4 transition-transform group-hover:translate-x-0.5" />
 
-  {/* Inner highlight */}
+  {/* subtle sheen */}
   <span
     aria-hidden
-    className="
-      absolute inset-0 rounded-full
-      bg-gradient-to-b from-white/60 to-transparent
-      opacity-70
-    "
+    className="absolute inset-0 rounded-full bg-gradient-to-b from-white/40 to-transparent opacity-60"
   />
 </button>
+
             </div>
           </div>
         </div>
@@ -1113,24 +1153,51 @@ export default function Home({ onNavigate }) {
 
         {/* Right actions */}
         <div className="lg:col-span-5">
-          <div className="flex flex-col gap-4">
-            <button
-              type="button"
-              onClick={() => onNavigate("contact")}
-              className="group w-full px-10 py-5 rounded-2xl bg-white text-[#206ca6] font-extrabold text-lg hover:shadow-2xl hover:shadow-white/15 transition-all duration-300 inline-flex items-center justify-center gap-2"
-            >
-              Book a Free Call
-              <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-            </button>
+          <div className="flex flex-col gap-3">
 
-            <button
-              type="button"
-              onClick={() => onNavigate("portfolio")}
-              className="w-full px-10 py-5 rounded-2xl border border-white/25 bg-white/5 text-white font-bold text-lg hover:bg-white/10 hover:border-white/40 transition-all duration-300 inline-flex items-center justify-center gap-2"
-            >
-              View Recent Work
-              <ArrowRight className="w-6 h-6" />
-            </button>
+           <button
+  type="button"
+  onClick={() => onNavigate("contact")}
+  className="
+    group w-full
+    inline-flex items-center justify-center gap-2
+    px-8 py-[12px]
+    rounded-xl
+    bg-white/90 text-[#206ca6]
+    text-[14px] font-semibold
+    backdrop-blur-md
+    transition-all duration-300
+    hover:bg-white
+    hover:shadow-lg hover:shadow-white/20
+    focus:outline-none
+  "
+>
+  Book a Free Call
+  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+</button>
+<button
+  type="button"
+  onClick={() => onNavigate("portfolio")}
+  className="
+    group w-full
+    inline-flex items-center justify-center gap-2
+    px-8 py-[12px]
+    rounded-xl
+    bg-white/10
+    text-white
+    text-[14px] font-medium
+    backdrop-blur-md
+    border border-white/25
+    transition-all duration-300
+    hover:bg-white/15
+    hover:border-white/40
+    focus:outline-none
+  "
+>
+  View Recent Work
+  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+</button>
+
 
             {/* Tiny helper text */}
             <div className="pt-2 text-sm text-white/55 leading-relaxed">

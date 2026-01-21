@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   Target,
   Eye,
@@ -57,6 +58,15 @@ const visionParagraphs = [
 ];
 
 export default function About({ onNavigate }) {
+  useEffect(() => {
+    if (document.getElementById("zCU5sv5A4DOdf87pPt4E8")) return;
+
+    const script = document.createElement("script");
+    script.src = "https://www.chatbase.co/embed.min.js";
+    script.id = "zCU5sv5A4DOdf87pPt4E8"; // Replace with your actual bot ID if needed
+    script.defer = true;
+    document.body.appendChild(script);
+  }, []);
   return (
     <div className="min-h-screen bg-white">
 
@@ -102,50 +112,56 @@ export default function About({ onNavigate }) {
         </p>
 
         {/* CTA row */}
-        <div className="mt-10 flex flex-col sm:flex-row gap-4">
-          <button
-    type="button"
-    onClick={() => onNavigate("contact")}
-    className="
-      group inline-flex items-center justify-center
-      px-7 py-3.5
-      text-[13.5px] md:text-[14px]
-      font-semibold tracking-wide
-      rounded-full
-      bg-white text-[#071a2a]
-      transition-all duration-300
-      hover:bg-white/90
-      focus:outline-none
-    "
-  >
-          <span className="flex items-center gap-2">
-            Get in Touch
-            <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-            </span>
-          </button>
+        <div className="mt-8 flex flex-col sm:flex-row gap-3">
+
+         <button
+  type="button"
+  onClick={() => onNavigate("contact")}
+  className="
+    group inline-flex items-center justify-center
+    px-6 py-[9px]
+    text-[13px]
+    font-medium tracking-wide
+    rounded-full
+    bg-white/85 text-[#071a2a]
+    backdrop-blur-md
+    transition-all duration-300
+    hover:bg-white/95
+    hover:shadow-sm hover:shadow-white/20
+    focus:outline-none
+  "
+>
+  <span className="flex items-center gap-1.5">
+    Get in Touch
+    <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5" />
+  </span>
+</button>
+
 
            <button
-    type="button"
-    onClick={() => onNavigate("portfolio")}
-    className="
-      group inline-flex items-center justify-center
-      px-7 py-3.5
-      text-[13.5px] md:text-[14px]
-      font-medium tracking-wide
-      rounded-full
-      text-white
-      border border-white/25
-      transition-all duration-300
-      hover:border-white/50
-      focus:outline-none
-    "
-  >
-    <span className="flex items-center gap-2">
-            View Our Work
-            <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-            </span>
-          </button>
-        </div>
+  type="button"
+  onClick={() => onNavigate("portfolio")}
+  className="
+    group inline-flex items-center justify-center
+    px-6 py-[9px]
+    text-[13px]
+    font-normal tracking-wide
+    rounded-full
+    text-white/90
+    backdrop-blur-md
+    border border-white/20
+    transition-all duration-300
+    hover:border-white/40
+    hover:text-white
+    focus:outline-none
+  "
+>
+  <span className="flex items-center gap-1.5">
+    View Our Work
+    <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5" />
+  </span>
+</button>
+</div>
 
         {/* Trust strip */}
         <div className="mt-12 flex flex-wrap items-center gap-4 text-white/70">
@@ -216,13 +232,17 @@ export default function About({ onNavigate }) {
   stroke="url(#arc)"
   strokeWidth="10"
   strokeLinecap="round"
-  initial={{ pathLength: 0 }}
-  animate={{ pathLength: 1 }}
+  initial={{ pathLength: 0, opacity: 0.6 }}
+  animate={{ pathLength: 1, opacity: 1 }}
   transition={{
-    duration: 1.6,
+    duration: 1.8,
     ease: "easeInOut",
+    repeat: Infinity,
+    repeatType: "loop",
+    repeatDelay: 1.2,
   }}
 />
+
 
   {/* Dotted guide */}
   <path
@@ -237,11 +257,11 @@ export default function About({ onNavigate }) {
 
   {/* Journey points */}
   {[
-  { cx: 70, cy: 220, delay: 0.2 },   // Concept
-  { cx: 170, cy: 125, delay: 0.5 },  // Strategy
-  { cx: 300, cy: 90, delay: 0.8 },   // Execution
-  { cx: 430, cy: 125, delay: 1.1 },  // Delivery
-  { cx: 530, cy: 220, delay: 1.4 },  // After-Services
+  { cx: 70, cy: 220, delay: 0.2 },
+  { cx: 170, cy: 125, delay: 0.5 },
+  { cx: 300, cy: 90, delay: 0.8 },
+  { cx: 430, cy: 125, delay: 1.1 },
+  { cx: 530, cy: 220, delay: 1.4 },
 ].map((p, i) => (
   <motion.circle
     key={i}
@@ -249,16 +269,19 @@ export default function About({ onNavigate }) {
     cy={p.cy}
     r="7"
     fill={i === 2 ? "#ffffff" : "#206ca6"}
-    initial={{ scale: 0, opacity: 0 }}
-    animate={{ scale: 1, opacity: 1 }}
+    animate={{
+      scale: [1, 1.25, 1],
+      opacity: [0.7, 1, 0.7],
+    }}
     transition={{
+      duration: 2.4,
       delay: p.delay,
-      type: "spring",
-      stiffness: 160,
-      damping: 14,
+      repeat: Infinity,
+      ease: "easeInOut",
     }}
   />
 ))}
+
 
 </svg>
 
@@ -395,30 +418,29 @@ export default function About({ onNavigate }) {
           </div>
         
           {/* small signature accent */}
-          <div className="mt-10 flex items-center gap-4">
-            <div className="h-[3px] w-14 rounded-full bg-gradient-to-r from-[#206ca6] to-[#b1b4ad]" />
-            <div className="h-px flex-1 bg-gray-200" />
-          </div>
+         <div className="mt-10" />
+
           {/* LEFT: editorial insight */}
   <div className="lg:col-span-7 relative pl-8">
-    {/* vertical accent */}
-    <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-[#206ca6] to-[#b1b4ad]" />
+  {/* vertical accent — clean, no top cap */}
+  <div className="absolute left-0 top-2 bottom-2 w-[3px] rounded-full bg-gradient-to-b from-[#206ca6] to-[#b1b4ad]" />
 
-    <div className="text-sm font-semibold tracking-[0.32em] uppercase text-gray-500">
-      Our Approach
-    </div>
-
-    <p className="mt-4 text-2xl font-semibold text-gray-900 leading-snug max-w-xl">
-      Listening first.
-      <span className="block text-gray-700 font-normal">
-        Delivering with precision.
-      </span>
-    </p>
-
-    <div className="mt-4 text-sm text-gray-500 italic">
-      — Blue Focus Philosophy
-    </div>
+  <div className="text-sm font-semibold tracking-[0.32em] uppercase text-gray-500">
+    Our Approach
   </div>
+
+  <p className="mt-4 text-2xl font-semibold text-gray-900 leading-snug max-w-xl">
+    Listening first.
+    <span className="block text-gray-700 font-normal">
+      Delivering with precision.
+    </span>
+  </p>
+
+  <div className="mt-4 text-sm text-gray-500 italic">
+    — Blue Focus Philosophy
+  </div>
+</div>
+
         </div>
         
 
@@ -445,55 +467,57 @@ export default function About({ onNavigate }) {
           </div>
 
           {/* CTA strip (not a card) */}
-          <div className="mt-12 flex flex-col sm:flex-row gap-4">
+          <div className="mt-10 flex flex-col sm:flex-row gap-3">
+
             <button
   type="button"
   onClick={() => onNavigate("contact")}
   className="
-    group relative inline-flex items-center justify-center gap-3
-    px-10 py-4
+    group relative inline-flex items-center justify-center gap-2
+    px-7 py-[10px]
     rounded-full
-    bg-[#206ca6] text-white font-semibold
+    bg-[#206ca6]/90 text-white
+    text-[13.5px] font-medium
+    backdrop-blur-md
     transition-all duration-300
-    hover:bg-[#1a5685]
-    hover:shadow-xl hover:shadow-[#206ca6]/30
+    hover:bg-[#1a5685]/95
+    hover:shadow-lg hover:shadow-[#206ca6]/25
+    focus:outline-none
   "
 >
-  
-              Get in Touch
-               <ArrowRight className="relative z-10 w-5 h-5 transition-transform group-hover:translate-x-1" />
+  <span className="relative z-10">Get in Touch</span>
+  <ArrowRight className="relative z-10 w-4 h-4 transition-transform group-hover:translate-x-0.5" />
 </button>
 
-           <button
+
+          <button
   type="button"
   onClick={() => onNavigate("portfolio")}
   className="
-    group relative inline-flex items-center justify-center gap-3
-    px-10 py-4
+    group relative inline-flex items-center justify-center gap-2
+    px-7 py-[10px]
     rounded-full
-    text-gray-900 font-semibold
+    text-gray-900
+    text-[13.5px] font-medium
+    bg-white/25
     backdrop-blur-md
-    bg-white/30
-    border border-gray-900/15
+    border border-gray-900/20
     transition-all duration-300
-    hover:bg-white/50
-    hover:border-[#206ca6]/40
+    hover:bg-white/40
+    hover:border-[#206ca6]/45
     hover:text-[#206ca6]
+    focus:outline-none
   "
 >
-              View Our Work
-              <ArrowRight className="relative z-10 w-5 h-5 transition-transform group-hover:translate-x-1" />
+  <span className="relative z-10">View Our Work</span>
+  <ArrowRight className="relative z-10 w-4 h-4 transition-transform group-hover:translate-x-0.5" />
 
-  {/* Inner highlight */}
   <span
     aria-hidden
-    className="
-      absolute inset-0 rounded-full
-      bg-gradient-to-b from-white/60 to-transparent
-      opacity-70
-    "
+    className="absolute inset-0 rounded-full bg-gradient-to-b from-white/40 to-transparent opacity-60"
   />
 </button>
+
           </div>
         </div>
       </div>
@@ -535,24 +559,27 @@ export default function About({ onNavigate }) {
     <div className="mt-10 grid lg:grid-cols-12 gap-12 items-start">
       {/* left: title + meta */}
       <div className="lg:col-span-4">
-        <h2 className="text-4xl md:text-5xl font-extrabold leading-tight text-gray-900">
-          {ceoMessage.title}
-          <span className="block mt-3 h-[3px] w-16 rounded-full bg-gradient-to-r from-[#206ca6] to-[#b1b4ad]" />
-        </h2>
+        <h2 className="text-6xl md:text-7xl font-extrabold leading-[1.05] text-gray-900">
+  {ceoMessage.title}
+  <span className="block mt-5 h-[5px] w-24 rounded-full bg-gradient-to-r from-[#206ca6] to-[#b1b4ad]" />
+</h2>
 
-        <p className="mt-6 text-lg text-gray-600 leading-relaxed">
-          A note on our legacy, standards, and commitment to client success —
-          written from leadership.
-        </p>
+
+       <p className="mt-8 text-xl md:text-2xl text-gray-600 leading-relaxed max-w-xl">
+  A note on our legacy, standards, and commitment to client success —
+  written from leadership.
+</p>
 
         {/* subtle “stamp” */}
-        <div className="mt-10">
-          <div className="text-sm font-semibold tracking-[0.22em] uppercase text-gray-500">
-            Dubai • UAE
-          </div>
-          <div className="mt-2 text-2xl font-extrabold text-gray-900">
-            Blue Focus
-          </div>
+       {/* subtle “stamp” — upgraded */}
+<div className="mt-12">
+  <div className="text-base md:text-lg font-semibold tracking-[0.28em] uppercase text-gray-500">
+    Dubai • UAE
+  </div>
+  <div className="mt-3 text-3xl md:text-4xl font-extrabold text-gray-900">
+    Blue Focus
+  </div>
+
         </div>
       </div>
 
@@ -741,54 +768,57 @@ export default function About({ onNavigate }) {
     </div>
 
     {/* Actions */}
-    <div className="mt-16 flex flex-col sm:flex-row gap-4">
-      <button
+   <div className="mt-12 flex flex-col sm:flex-row gap-3">
+
+     <button
   type="button"
   onClick={() => onNavigate("contact")}
   className="
-    group relative inline-flex items-center justify-center gap-3
-    px-10 py-4
+    group relative inline-flex items-center justify-center gap-2
+    px-7 py-[10px]
     rounded-full
-    bg-[#206ca6] text-white font-semibold
+    bg-[#206ca6]/90 text-white
+    text-[13.5px] font-medium
+    backdrop-blur-md
     transition-all duration-300
-    hover:bg-[#1a5685]
-    hover:shadow-xl hover:shadow-[#206ca6]/30
+    hover:bg-[#1a5685]/95
+    hover:shadow-lg hover:shadow-[#206ca6]/25
+    focus:outline-none
   "
 >
-        Talk to Our Team
-        <ArrowRight className="relative z-10 w-5 h-5 transition-transform group-hover:translate-x-1" />
+  <span className="relative z-10">Talk to Our Team</span>
+  <ArrowRight className="relative z-10 w-4 h-4 transition-transform group-hover:translate-x-0.5" />
 </button>
+
 
       <button
   type="button"
   onClick={() => onNavigate("portfolio")}
   className="
-    group relative inline-flex items-center justify-center gap-3
-    px-10 py-4
+    group relative inline-flex items-center justify-center gap-2
+    px-7 py-[10px]
     rounded-full
-    text-gray-900 font-semibold
+    text-gray-900
+    text-[13.5px] font-medium
+    bg-white/25
     backdrop-blur-md
-    bg-white/30
-    border border-gray-900/15
+    border border-gray-900/20
     transition-all duration-300
-    hover:bg-white/50
-    hover:border-[#206ca6]/40
+    hover:bg-white/40
+    hover:border-[#206ca6]/45
     hover:text-[#206ca6]
+    focus:outline-none
   "
 >
-        See What We’ve Delivered
-        <ArrowRight className="relative z-10 w-5 h-5 transition-transform group-hover:translate-x-1" />
+  <span className="relative z-10">See What We’ve Delivered</span>
+  <ArrowRight className="relative z-10 w-4 h-4 transition-transform group-hover:translate-x-0.5" />
 
-  {/* Inner highlight */}
   <span
     aria-hidden
-    className="
-      absolute inset-0 rounded-full
-      bg-gradient-to-b from-white/60 to-transparent
-      opacity-70
-    "
+    className="absolute inset-0 rounded-full bg-gradient-to-b from-white/40 to-transparent opacity-60"
   />
 </button>
+
     </div>
 
     <div className="mt-16 h-px w-full bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
@@ -889,24 +919,53 @@ export default function About({ onNavigate }) {
 
         {/* Right actions */}
         <div className="lg:col-span-5">
-          <div className="flex flex-col gap-4">
-            <button
-              type="button"
-              onClick={() => onNavigate("contact")}
-              className="group w-full px-10 py-5 rounded-2xl bg-white text-[#206ca6] font-extrabold text-lg hover:shadow-2xl hover:shadow-white/15 transition-all duration-300 inline-flex items-center justify-center gap-2"
-            >
-              Get in Touch
-              <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-            </button>
+          <div className="flex flex-col gap-3">
 
             <button
-              type="button"
-              onClick={() => onNavigate("portfolio")}
-              className="w-full px-10 py-5 rounded-2xl border border-white/25 bg-white/5 text-white font-bold text-lg hover:bg-white/10 hover:border-white/40 transition-all duration-300 inline-flex items-center justify-center gap-2"
-            >
-              View Our Work
-              <ArrowRight className="w-6 h-6" />
-            </button>
+  type="button"
+  onClick={() => onNavigate("contact")}
+  className="
+    group w-full
+    inline-flex items-center justify-center gap-2
+    px-8 py-[12px]
+    rounded-xl
+    bg-white/90 text-[#206ca6]
+    text-[14px] font-semibold
+    backdrop-blur-md
+    transition-all duration-300
+    hover:bg-white
+    hover:shadow-lg hover:shadow-white/20
+    focus:outline-none
+  "
+>
+  Get in Touch
+  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+</button>
+
+
+           <button
+  type="button"
+  onClick={() => onNavigate("portfolio")}
+  className="
+    group w-full
+    inline-flex items-center justify-center gap-2
+    px-8 py-[12px]
+    rounded-xl
+    bg-white/10
+    text-white
+    text-[14px] font-medium
+    backdrop-blur-md
+    border border-white/25
+    transition-all duration-300
+    hover:bg-white/15
+    hover:border-white/40
+    focus:outline-none
+  "
+>
+  View Our Work
+  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+</button>
+
 
             <div className="pt-2 text-sm text-white/55 leading-relaxed">
               No pressure — share your requirements and we’ll respond fast.
