@@ -8,6 +8,7 @@ import Bulletin from "./pages/Bulletin";
 
 import Portfolio from "./pages/Portfolio";
 import Contact from "./pages/Contact";
+import ScrollToTop from './components/ScrollToTop';  // ✅ import it
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -24,6 +25,7 @@ function App() {
   }, [currentPage]);
 
   const renderPage = () => {
+     <ScrollToTop /> 
     switch (currentPage) {
       case "home":
         return <Home onNavigate={handleNavigate} />;

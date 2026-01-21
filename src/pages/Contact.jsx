@@ -133,16 +133,36 @@ const toggleService = (service) => {
        
 
         <h1 className="mt-8 text-5xl md:text-7xl font-extrabold text-white leading-[1.02]">
-          Let’s start a
-          <span className="block mt-3 bg-gradient-to-r from-[#b1b4ad] via-white to-[#206ca6] bg-clip-text text-transparent">
-            conversation that converts.
-          </span>
+         Let’s start a
+  <span className="block mt-2 bg-gradient-to-r from-[#b1b4ad] via-white to-[#206ca6] bg-clip-text text-transparent">
+    conversation
+  </span>
+  <span className="block">
+    that converts.
+  </span>
         </h1>
 
-        <p className="mt-6 text-lg md:text-xl text-white/75 leading-relaxed max-w-2xl">
-          Tell us what you’re planning — we’ll respond fast with a clear scope,
-          timeline, and next steps. From concept to on-ground delivery, we’ve got you.
-        </p>
+       <p className="mt-6 text-[15px] sm:text-lg md:text-xl text-white/75 leading-[1.7] max-w-2xl">
+  <span className="block">
+    Tell us what you’re planning —
+  </span>
+
+  <span className="block">
+    we’ll respond fast with a clear scope,
+  </span>
+
+  <span className="block">
+    timeline, and next steps.
+  </span>
+
+  <span className="block mt-1">
+    From concept to on-ground delivery,
+  </span>
+
+  <span className="block">
+    we’ve got you.
+  </span>
+</p>
 
         {/* proof line */}
         <div className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-3 text-white/70">
@@ -181,7 +201,7 @@ const toggleService = (service) => {
       </div>
 
       {/* RIGHT: “contact-ready” panel */}
-      <div className="lg:col-span-5">
+      <div className="hidden lg:block lg:col-span-5">
         <div className="relative">
           {/* outer frame */}
           <div className="absolute -inset-4 rounded-[34px] border border-white/15 bg-white/5 backdrop-blur" />
@@ -289,7 +309,15 @@ const toggleService = (service) => {
 
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-3xl">
-            <h2 className="text-6xl md:text-7xl font-extrabold leading-[1.02] text-gray-900">
+           <h2
+  className="
+    text-[34px] sm:text-6xl md:text-7xl
+    font-extrabold
+    text-gray-900
+    leading-[1.15] sm:leading-[1.08] md:leading-[1.02]
+    overflow-visible
+  "
+>
               You’re not filling a form.
               <span className="block mt-4 text-gray-500">
                 You’re starting a collaboration.
@@ -520,15 +548,7 @@ const toggleService = (service) => {
             Blue Focus • Dubai • Events • Exhibitions
           </div>
         </div>
-         <a
-  href="https://wa.me/971551508999"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="fixed bottom-20 right-4 bg-green-500 hover:bg-green-600 text-white rounded-full p-3 shadow-lg flex items-center justify-center z-50 transition-colors duration-300"
-  aria-label="Chat on WhatsApp"
->
-  <FaWhatsapp className="h-6 w-6" />
-</a>
+        
       </section>
     </div>
   );

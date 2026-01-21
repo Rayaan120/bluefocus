@@ -345,7 +345,9 @@ export default function Home({ onNavigate }) {
     
 
     {/* Subtle lines */}
-    <div className="absolute left-0 right-0 top-[140px] h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
+   <div className="absolute left-0 right-0 top-[190px] translate-y-[100px] h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
+
+
     <div className="absolute left-0 right-0 bottom-[110px] h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
   </div>
 
@@ -459,7 +461,7 @@ export default function Home({ onNavigate }) {
 </div>
 {/* Logo SECOND */}
 {/* Logo — balanced scale */}
-<div className="mt-8">
+<div className="mt-8 translate-y-4">
   <img
     src="/image/bluefocus-logo.png"
     alt="Blue Focus Logo"
@@ -469,6 +471,8 @@ export default function Home({ onNavigate }) {
     "
   />
 </div>
+
+
 
 
 

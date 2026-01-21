@@ -225,9 +225,23 @@ export default function Services({ onNavigate }) {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
+   <div className="min-h-screen bg-white overflow-x-hidden">
+
+
       {/* SERVICES HERO — Premium / Unique */}
-<div className="relative overflow-hidden bg-gradient-to-br from-[#081527] via-[#0d3d5c] to-[#081527] pt-8 pb-20">
+<div
+  className="
+    relative overflow-hidden
+    bg-gradient-to-br from-[#081527] via-[#0d3d5c] to-[#081527]
+    min-h-[100svh]
+    flex items-center
+    pt-6 pb-10 pt-safe
+
+    lg:pt-8 lg:pb-20
+  "
+>
+
+
 
   {/* background art */}
   <div className="absolute inset-0 pointer-events-none">
@@ -263,68 +277,91 @@ export default function Services({ onNavigate }) {
 
        
 
-        <h1 className="mt-8 text-5xl md:text-7xl font-extrabold text-white leading-[1.02]">
-          Comprehensive solutions
-          <span className="block mt-3 bg-gradient-to-r from-[#b1b4ad] via-white to-[#206ca6] bg-clip-text text-transparent">
-            for every occasion.
-          </span>
+      <h1
+  className="
+    mt-6
+    text-[38px] sm:text-5xl md:text-7xl
+    font-extrabold
+    text-white
+    leading-[1.12] sm:leading-[1.05] md:leading-[1.02]
+    overflow-visible
+  "
+>
+
+
+         Comprehensive{" "}
+  <span className="block">
+    solutions
+  </span>
+  <span className="block mt-2 bg-gradient-to-r from-[#b1b4ad] via-white to-[#206ca6] bg-clip-text text-transparent">
+    for every occasion.
+  </span>
         </h1>
 
-        <p className="mt-6 text-lg md:text-xl text-white/75 leading-relaxed max-w-2xl">
-          From concept to completion — strategy, design, build, and on-ground execution.
-          Built to exceed expectations and create lasting impressions.
-        </p>
+       <p className="
+  mt-5
+  text-[15px] sm:text-lg md:text-xl
+  text-white/75
+  leading-relaxed
+  max-w-none sm:max-w-2xl
+">
+  </p>
 
         {/* CTA row */}
-        <div className="mt-8 flex flex-col sm:flex-row gap-3">
+        <div className="mt-8 flex flex-col gap-2 w-full max-w-[260px]">
 
-         <button
+
+
+     <button
   type="button"
   onClick={() => onNavigate("contact")}
   className="
-    group inline-flex items-center justify-center
-    px-6 py-[9px]
-    text-[13px]
-    font-medium tracking-wide
+    w-full
+    inline-flex items-center justify-center gap-1.5
+    px-4 py-[7px]
+    text-[12.5px]
+    font-medium
+    tracking-wide
     rounded-full
     bg-white/85 text-[#071a2a]
     backdrop-blur-md
     transition-all duration-300
-    hover:bg-white/95
+    hover:bg-white
     hover:shadow-sm hover:shadow-white/20
     focus:outline-none
   "
 >
-  <span className="flex items-center gap-1.5">
-    Talk to Us
-    <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5" />
-  </span>
+  Talk to Us
+  <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5" />
 </button>
+
+
 
 
            <button
   type="button"
   onClick={() => onNavigate("portfolio")}
   className="
-    group inline-flex items-center justify-center
-    px-6 py-[9px]
-    text-[13px]
-    font-normal tracking-wide
+    w-full
+    inline-flex items-center justify-center gap-1.5
+    px-4 py-[7px]
+    text-[12.5px]
+    font-normal
+    tracking-wide
     rounded-full
     text-white/90
+    border border-white/25
     backdrop-blur-md
-    border border-white/20
     transition-all duration-300
     hover:border-white/40
     hover:text-white
     focus:outline-none
   "
 >
-  <span className="flex items-center gap-1.5">
-    View Work
-    <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5" />
-  </span>
+  View Work
+  <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5" />
 </button>
+
 
         </div>
 
@@ -355,7 +392,8 @@ export default function Services({ onNavigate }) {
       </div>
 
       {/* RIGHT: unique “capability cloud” */}
-      <div className="lg:col-span-5">
+     <div className="hidden lg:block lg:col-span-5">
+
         <div className="relative">
           {/* frame */}
           <div className="absolute -inset-4 rounded-[34px] border border-white/15 bg-white/5 backdrop-blur" />
@@ -370,7 +408,8 @@ export default function Services({ onNavigate }) {
               <span className="block text-white/80">Turnkey delivery.</span>
             </div>
 
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-wrap gap-2 sm:gap-3">
+
               {[
                 "Concept",
                 "Design",
@@ -462,7 +501,7 @@ export default function Services({ onNavigate }) {
       {/* LEFT: rail selector */}
       <div className="lg:col-span-5">
         <h2 className="text-5xl md:text-6xl font-extrabold leading-[1.03] text-gray-900">
-          A service menu,
+          Our Services,
           <span className="block mt-3 bg-gradient-to-r from-[#206ca6] via-[#1a5685] to-[#0d3d5c] bg-clip-text text-transparent">
             designed like a stage.
           </span>

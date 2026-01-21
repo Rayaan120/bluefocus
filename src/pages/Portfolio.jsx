@@ -118,6 +118,14 @@ useEffect(() => {
     script.defer = true;
     document.body.appendChild(script);
   }, []);
+  const [hoverCat, setHoverCat] = useState(null);
+
+const CATEGORY_BG = {
+  Events: "/image/portfolio/events/event-01.jpg",
+  Exhibitions: "/image/portfolio/exhibitions/exhibition-01.jpg",
+  Interiors: "/image/portfolio/interiors/interior-01.jpg",
+};
+
   return (
     <section className="relative bg-white overflow-hidden">
       {/* Background */}
@@ -128,7 +136,30 @@ useEffect(() => {
         <div className="absolute top-8 left-1/2 -translate-x-1/2 text-[120px] sm:text-[180px] lg:text-[260px] font-extrabold text-gray-900/5 select-none">
           PROJECTS
         </div>
+        {/* Hover background image */}
+<AnimatePresence>
+  {hoverCat && (
+    <motion.div
+      key={hoverCat}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 0.18 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5, ease }}
+      className="absolute inset-0 z-[1]"
+    >
+      <img
+        src={CATEGORY_BG[hoverCat]}
+        alt={hoverCat}
+        className="w-full h-full object-cover"
+      />
+      {/* dark wash so text stays readable */}
+      <div className="absolute inset-0 bg-white/60 backdrop-blur-[2px]" />
+    </motion.div>
+  )}
+</AnimatePresence>
+
       </div>
+      
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-24 pb-28">
         {/* Header */}
@@ -180,7 +211,12 @@ useEffect(() => {
                 animate="show"
                 exit="exit"
               >
-                <CategoryPanels categories={BLUE_CATS} onSelect={openBlueCategory} />
+                <CategoryPanels
+  categories={BLUE_CATS}
+  onSelect={openBlueCategory}
+  onHover={setHoverCat}
+/>
+
               </motion.div>
             )}
 
@@ -277,15 +313,19 @@ useEffect(() => {
 
 /* -------------------- CATEGORY PANELS -------------------- */
 
-function CategoryPanels({ categories, onSelect }) {
+function CategoryPanels({ categories, onSelect, onHover }) {
+
   return (
     <div className="grid sm:grid-cols-3 gap-6">
       {categories.map((c) => (
         <button
-          key={c}
-          onClick={() => onSelect(c)}
-          className="rounded-[28px] border border-gray-200 bg-white/70 backdrop-blur p-8 text-left hover:border-[#206ca6]/30 transition"
-        >
+  key={c}
+  onMouseEnter={() => onHover(c)}
+  onMouseLeave={() => onHover(null)}
+  onClick={() => onSelect(c)}
+  className="rounded-[28px] border border-gray-200 bg-white/70 backdrop-blur p-8 text-left hover:border-[#206ca6]/30 transition"
+>
+
           <div className="text-xs font-semibold tracking-[0.34em] uppercase text-gray-500">
             Category
           </div>
