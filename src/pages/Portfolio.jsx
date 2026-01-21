@@ -142,21 +142,24 @@ const CATEGORY_BG = {
     <motion.div
       key={hoverCat}
       initial={{ opacity: 0 }}
-      animate={{ opacity: 0.18 }}
+      animate={{ opacity: 0.55 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.5, ease }}
+      transition={{ duration: 0.45, ease }}
       className="absolute inset-0 z-[1]"
     >
+      {/* Background image */}
       <img
         src={CATEGORY_BG[hoverCat]}
         alt={hoverCat}
         className="w-full h-full object-cover"
       />
-      {/* dark wash so text stays readable */}
-      <div className="absolute inset-0 bg-white/60 backdrop-blur-[2px]" />
+
+      {/* Light contrast wash (NOT white) */}
+      <div className="absolute inset-0 bg-black/20" />
     </motion.div>
   )}
 </AnimatePresence>
+
 
       </div>
       
